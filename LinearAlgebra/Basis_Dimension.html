@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../stylesheet_contents.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>基底と次元</title>
+</head>
+<body>
+	<h2>基底と次元</h2>
+	<div>
+		<h3>直和</h3>
+		<p>
+			線型空間 $V$ の二つの部分空間 $W_1,W_2$ について，その交わり $W_1 \cap W_2$ もまた部分空間となることは<a href="./LinearSpace.html" rel="noreferrer">線型空間</a>の頁で示した通りである．しかし $W_1$ と $W_2$ の結び $W_1 \cup W_2$ は一般に部分空間にはならない．$W_1$ の元と $W_2$ の元の和を全て集めた集合
+			\[
+				W_1 +W_2 := \{w_1 +w_2 \mid w_1 \in W_1; \; w_2 \in W_2\}
+			\]
+			が部分空間となる．これを $W_1$ と $W_2$ の<strong>和空間</strong>と謂う．和空間 $W_1 +W_2$ のどの元 $x$ も，ある $w_1 \in W_1, \; w_2 \in W_2$ によって $x = w_1 +w_2$ という表示をもつが，しかしこれは一般には一意ではない．実際，もし $w_1 = w_2$ であって零でないとすれば，すなわち $x$ が $W_1 \cap W_2$ の非零元であれば，$\lambda +\mu = 1$ なる任意の $\lambda,\mu \in \mathbb K$ に対して $x = w_1\lambda +w_2\mu$ となり，無数の分解が存在することになる．
+		</p>
+		<p>
+			和空間 $W_1 +W_2$ の任意の元が一意な分解を持つとき，$W_1 +W_2$ は<strong>直和 (direct sum) </strong> であると謂い，記号 $W_1 \oplus W_2$ で表す．つまり，$W_1 +W_2$ が直和であるとは，任意の $x \in W_1 +W_2$ について $w_1,w_1' \in W_1;\; w_2,w_2' \in W_2$ が存在して
+			\[
+				x = w_1 +w_2 = w_1' +w_2'
+				\quad\Longrightarrow\quad
+				w_1 = w_1' \quad \wedge \quad w_2 = w_2'
+			\]
+			が成り立つことを謂う．さて，上の条件は $w_1,w_1',w_2,w_2'$ に対する同値な条件
+			\[
+				\label{eq: 成分分解の一意性}
+				w_1 -w_1' = -(w_2 -w_2')
+				\quad\Longrightarrow\quad
+				w_1 -w_1' = o \quad \wedge \quad w_2 -w_2' = o
+				\tag{1}
+			\]
+			に書き換えられる．上の条件式の前件 $w_1 -w_1' = -(w_2 -w_2')$ は $w_1 -w_1'$ と $w_2 -w_2'$ が $W_1 \cap W_2$ の元であることを意味する．これは $W_1 \cap W_2 = \{o\}$ であることと同値である：もし $W_1 \cap W_2$ が零でない元 $a$ を持つならば，$w_1' = w_1 -a, \; w_2' = w_2 +a$ とおくとき
+			\[
+				w_1 -w_1' = a = -(w_2 -w_2')
+			\]
+			であるのに $w_1 -w_1' = o \;\wedge\; w_2 -w_2' = o$ でない．したがって $W_1 \cap W_2 = \{o\}$ である．逆の成立は明らかである．
+		</p>
+		<p>
+			$\bigcap_{i=1}^n W_i = \{o\}$ なる有限個の部分空間 $W_1,W_2,\dots,W_n$ の直和 $\bigoplus_{i=1}^n W_i$ の定義も同様である．この場合も $\bigoplus_{i = 1}^n W_i$ の各元 $w$ は
+			\[
+				w = \sum_{i=1}^n w_i,\qquad w_i \in W_i, i = 1,2, \dots, n
+			\]
+			なる形の一意な分解を持つ．さらに一般化して，$\bigcap_{i\in I} W_i = \{o\}$ なる部分空間の族 (有限とは限らない！) $\{W_i\}_{i\in I}$ の直和の各元 $w$ は，$I$ の<em>有限</em>部分集合 $I'$ をとり
+			\[
+				\label{eq: 直和の元の分解}
+				w = \sum_{i\in I'} w_i,\qquad w_i \in W_i
+				\tag{2}
+			\]
+			なる形の一意な分解を持つ．
+		</p>
+	</div>
+
+	<div>
+		<h3>線型独立性</h3>
+		<p>
+			二つの部分空間 $W_1,W_2$ の交わりが零ベクトルのみであるとき，したがってそれらの和空間が直和となるとき，$W_1,W_2$ は<strong>線型独立 (linearly independent) </strong>であると謂う．逆に $W_1 \cap W_2$ が非零な元を含むときは<strong>線型従属</strong>であると謂う．特に，非零な二つのベクトル $x_1,x_2$ がそれぞれ生成する空間 $x_1\mathbb K, \; x_2\mathbb K$ に対してこの議論を適用すると，$x_1\mathbb K$ と $x_2\mathbb K$ が線型独立である，すなわち $x_1\mathbb K \cap x_2\mathbb K = \{o\}$ であることは，\eqref{eq: 成分分解の一意性} 式において $w_1 -w_1' = x_1\lambda_1, \; w_2 -w_2' = x_2\lambda_2$ と置きなおして
+			\[
+				x_1\lambda_1 +x_2\lambda_2 = o
+				\quad\Longrightarrow\quad
+				\lambda_1 = \lambda_2 = 0
+			\]
+			という条件と同値である (前件の関係式は $a,b$ の線型関係と呼ばれる)．このときは特に，二つのベクトル $a,b$ が互いに線型独立であると謂う．これを一般化して，ベクトル族 $\{x_i\}_{i \in I}$ の元が互いに線型独立であるとは，その任意の線型関係が自明な解以外を持たないこと，すなわち $I$ の任意の有限部分集合 $I'$ に対して
+			\[
+				\label{eq: ベクトルの線型独立性}
+				\sum_{i\in I'}x_i\lambda_i = o
+				\quad\Longrightarrow\quad
+				\forall i \in I'(\lambda_i = 0)
+			\]
+			となることを謂う．ベクトル族 $\{x_i\}_{i\in I}$ の元が互いに線型従属であるとき &mdash;&mdash; すなわち，ある有限部分集合 $I' \subseteq I$ について線型関係 $\sum_{i\in I'}x_i\lambda_i = o$ が解 $\{\lambda_i\}_{i\in I'}$ を持ち，$i'\in I'$ に対して $\lambda_{i'} \neq 0$ であるならば，線型関係の両辺を $\lambda_{i'}$ で割ったのち $x_{i'}$ を移項することで，$x_{i'}$ を $\{x_i\}_{i \in I'\setminus\{i'\}}$ の線型結合で表すことができる．
+		</p>
+	</div>
+
+	<div>
+		<h3>基底と次元</h3>
+		<p>
+			線型空間 $V$ の部分空間 $W$ を線型独立な部分空間 $W_1,W_2$ の直和に分解できるとき，その元は $W_1$ の元と $W_2$ の元の和の形に一意に分解できる (というのが直和の要請であった)．この直和分解を推し進めて，$W$ が線型独立なベクトルの族 $\{g_i\}_{i\in I}$ の各元が生成する部分空間の直和に分解できれば，$W$ の元は \eqref{eq: 直和の元の分解} 式より族 $\{g_i\}_{i\in I}$ の線型結合で一意に表される．これは $\bigoplus_{i\in I}g_i\mathbb K = \span\{g_i\}_{i\in I}$ である，したがって又 $W$ が線型独立なベクトルの族より生成されることに他ならない．
+		</p>
+		<p>
+			特に，$V$ が生成系 $B = \{b_i\}_{i\in I}$ を持ち，かつ $B$ の元は互いに線型独立であるとき，$B$ は $V$ の<strong>基底 (basis) </strong>であると謂い，基底 $B$ の元を<strong>基ベクトル (basis vector) </strong>と謂う．このとき $V = \oplus_{i\in I}b_i\mathbb K$ であり，$V$ の任意の元は基底 $B$ の線型結合で一意に表される; 基底 $B$ が固定されていれば，任意の $v \in V$ に対し等式
+			\[
+				v = \sum_{i\in I'\subseteq I} b_i\lambda_i,\qquad (\#I' < \infty)
+			\]
+			によって $\{\lambda_i\}_{i\in I'}$ が一意に定まる．これを，基底 $B$ に関する $v$ の<strong>成分 (component) </strong>と謂う．
+		</p>
+		<p>
+			線型空間 $V$ の基底 $B$ の濃度を $V$ の<strong>次元 (dimension) </strong>と謂い，記号 $\dim V$ で表す．次元は線型空間を特徴づける非常に重要な概念である．というのも，様々な線型空間の間の本質的な区別は次元の違いだけであるためである (<a href=""></a>を参照)．ところで，この定義が well-defined であるためには $V$ の基底はどれも濃度が等しいことを示さなくてはならない．有限次元空間の場合には Steinitz の交換補題と呼ばれる次の補題がそれを保証する：
+		
+		<blockquote>
+			$V$ を線型空間とし，$B,W$ をそれぞれ $V$ の有限部分集合とする．$B,W$ はいずれも線型独立な元より成り，かつ $V = \span B$ (すなわち $B$ は $V$ の基底である) とき，以下が成り立つ：<br>
+			(i) $\# W \leq \# B$．<br>
+			(ii) $B$ の部分集合 $B'$ であって，$\# B' = \# B -\# W$ 且つ $B' \cup W$ が $V$ を生成するような $B'$ が存在する． 
+		</blockquote>
+		<details>
+			<summary>(証明)</summary>
+			<p>
+				$\dim V = n$ とし，$B = \{ b_i \}_{1\leq i\leq n}, \; W = \{ w_k \}_{1 \leq j\leq m}$ とする．$0$ 以上 $m$ 以下の整数 $k$ について，<br>
+				(i') $k \leq n$，<br>
+				(ii') $B$ の $k$ 個のベクトル $b_1, \dots, b_k$ を $w_1, \dots, w_k$ で置き換えた集合 $\{w_1,\dots,w_k,b_{k+1},\dots,b_n\}$ が $V$ の基底となる<br>
+				ことを $k$ に関する帰納法で示す．ただし (ii) において $k \geq n$ の場合は $B$ が完全に $W$ に置き換わるものとする．
+			</p>
+			<p>
+				$k = 0$ の場合は明らか．ある $k$ において (i'), (ii') の成立を仮定すると，$w_{k+1}$ は $\{w_1,\dots,w_k,b_{k+1},\dots,b_n\}$ の線型結合で一意に表される：
+				\[
+					w_{k +1} = \sum_{j = 1}^{k} w_j \lambda_j +\sum_{i = k+1}^n b_i\mu_i.
+				\]
+				$\mu_{k+1},\dots,\mu_n$ のうち少なくとも一つは零でない：もし全ての $\mu_i$ が零なら $w_{k+1}$ が $\{w_1,\dots,w_k\}$ だけの線型結合で表されることになり，$W$ の元が互いに線型独立であることに反する．同様に $k +1 > n$ ではありえない：もしそうなら $k \geq n$ となり再び上式の右辺が $W$ の元のみの線型結合になってしまう．したがって $k +1 \leq n$ である ((i') が成立)．$\mu_{k+1},\dots,\mu_n$ を適当に並べ替えて $\mu_{k+1} \neq 0$ としても一般性を失わない．そこで $\mu_{k+1}$ によって上式の両辺を割ると
+				\[
+					b_{k+1} = w_{k+1}\frac{1}{\mu_{k+1}} -\sum_{j = 1}^{k} w_j \lambda_j -\sum_{i = k+2}^n b_i\mu_i
+				\]
+				となる．よって $b_{k+1}$ は $V$ の部分集合 $S = \{w_1,\dots,w_{k+1},b_{k+1},\dots,b_n\}$ の生成する空間の元である．このとき $\span S$ はまた $\{w_1,\dots,w_{k+1}\}\cup \{b_{k+1},\dots,b_n\}$ の生成する空間でもあるが，これは $\{w_1,\dots,w_k,b_{k+1},\dots,b_n\}$ を含むから $\span S \supseteq V$．ゆえに $\span S = V$ を得る ((ii') が成立)．以上より $0 \leq k\leq m$ なる任意の $k$ について (i'), (ii') の成立が示された．
+			</p>
+			<p>
+				定理の主張 (i) は (i') において $m = n$ の場合である．(ii) は (ii') より直ちに示される．
+			</p>
+		</details>
+		</p>
+		<p>
+			なお，より突き詰めればそもそも線型空間に基底が存在するかどうかも証明する必要があるが，それには選択公理と同値な Tukey の補題を用いる．その証明は無限次元の場合も含み，且つ証明の仮定で次元の一意性も証明できる．
+		</p>
+	</div>
+
+</body>
+</html>

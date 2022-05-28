@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../stylesheet_contents.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>線型写像</title>
+</head>
+<body>
+	<h2>線型写像</h2>
+	<div>
+		<h3>定義</h3>
+		<p>
+			$V,W$ をそれぞれ体 $\mathbb K$ 上の線型空間とする．写像 $f : V \to W$ が<strong>線型 (linear) </strong>であるとは，次の<strong>線型性 (linearity) </strong>と呼ばれる条件が成立することである：
+			<ol>
+				<li>$\forall x,y \in V \big( f(x +y) = f(x) +f(y) \big)$．</li>
+				<li>$\forall x\in V;\lambda \in \mathbb K \big( f(x\lambda) = f(x)\lambda \big)$．</li>
+			</ol>
+			線型な写像を<strong>線型写像 (linear map) </strong>と謂う．
+		</p>
+	</div>
+	<div>
+		<h3>像と核</h3>
+		<p>
+			線型写像 $f : V \to W$ を特徴づける線型部分空間が二つある．ひとつは線型写像 $f$ の<strong>像 (image) </strong>と謂い，一般の写像に対するものと定義は同じである：
+			\[
+				\Im f = f(V) := \bigl\{ w \in W \bigm| \exists v\in V \st w = f(v)\bigr\}.
+			\]
+			これは $W$ の部分空間である．
+			<details>
+				<summary>［証明］</summary>
+				<p>
+					$w_1, w_2 \in \Im f$ なら $w_1 = f(v_1), \; w_2 = f(v_2)$ なる $v_1,v_2 \in V$ が存在して，$w_1 -w_2 = f(v_1) -f(v_2) = f(v_1 -v_2)$ より $w_1 -w_2 \in \Im f$ である．また $w \in \Im f$ なら $w = f(v)$ なる $v \in V$ が存在して，任意の $\lambda \in \mathbb K$ に対し $w\lambda = f(v)\lambda = f(v\lambda)$ であるから $w\lambda \in \Im f$ である．
+				</p>
+			</details>
+			もう一つは線型写像 $f$ の<strong>核 (kernel) </strong>と謂い，記号 $\ker f$ で表す：
+			\[
+				\ker f = \bigl\{ x \in V \bigm| f(x) = o_W \bigr\}.
+			\]
+			線型性から，任意の線型写像 $f$ について $f(o_V) = f(o_V +o_V) = f(o_V) +f(o_V)$ より $f(o_V) = o_W$ が判る (添字はそれぞれ $V,W$ の零ベクトルであることを示す)．よってどのような線型写像についてもその核は空でない．$f$ の核は $V$ の部分空間である．
+			<details>
+				<summary>［証明］</summary>
+				<p>
+					$v_1, v_2 \in \ker f$ なら $f(v_1 -v_2) = f(v_1) -f(v_2) = o_W -o_W = o_W$ より $v_1 -v_2 \in \ker f$ である．また $v \in \ker f$ なら任意の $\lambda \in \mathbb K$ に対して $f(v\lambda) = f(v)\lambda = o_W\lambda = o_W$ より $v\lambda \in \ker f$ である．
+				</p>
+			</details>
+		</p>
+		<p>
+			像と核は線型写像の全射性，単射性と深く結びついている．次の命題は線型写像の諸性質について基本的である：
+			<blockquote>
+				<p>
+					$V,W$ を線型空間，$f : V \to W$ を線型写像とするとき，以下が成り立つ：<br>
+					(Ⅰ) $f$ が全射 $\quad\Longleftrightarrow\quad \Im f = W$．<br>
+					(Ⅱ) $f$ が単射 $\quad\Longleftrightarrow\quad \ker f = \{o_V\}$． 
+				</p>
+			</blockquote>
+			<details>
+				<summary>［証明］</summary>
+				(Ⅰ)：線型写像 $f$ が全射であれば，任意の $w \in W$ に対して $w = f(v)$ なる $v \in V$ が存在する．したがって $\Im f \supseteq W$，よってまた $\Im f = W$．逆も明らか．<br>
+				(Ⅱ)：線型写像 $f$ が単射であれば，$f(x) = f(y)$ のとき $x = y$ が成り立つ．さて $x \in \ker f$ とすると $f(x) = o_W = f(o_W)$ より $x = o_V$，すなわち $\ker f = \{o_V\}$．逆に $\ker f = \{o_V\}$ ならば $f(x) = f(y)$ のとき $f(x -y) = o_W$，よって $x -y = o_W$．ゆえに $f$ は単射である．
+			</details>
+		</p>
+	</div>
+
+	<div>
+		<h3>線型写像の成分</h3>
+		<p>
+			また，$V$ の基底 $B = \{b_i\}_{i\in I}$ を選べば，線型写像 $f : V \to W$ の像 $\Im f$ は基底 $B$ の各元を $f$ で写したもので生成される：$\Im f = \span\big\{f(b_i)\big\}_{i\in I}$．特に，$\{f(b_i)\}_{i\in I}$ が $\Im f$ の基底となるのは $f$ が単射のとき，且つそのときに限る．
+			<details>
+				<summary>［証明］</summary>
+				<p>
+					各 $w \in \Im f$ に対して $w = f(v)$ なる $v \in V$ が存在し，さらにその $v$ は $V$ の基底の線型結合で表される：
+					\[
+						v = \sum_{i\in I'}b_i\lambda_i
+					\]
+					(ただし $I'$ は $I$ の有限部分集合)．よって
+					\[
+						w = f(v) = f\left(\sum_{i\in I'}b_i\lambda_i\right) = \sum_{i\in I'}f(b_i)\lambda_i
+					\]
+					となり，$w$ は $\big\{f(b_i)\big\}_{i\in I}$ の線型結合で表さる．すなわち $\Im f = \span\big\{f(b_i)\big\}_{i\in I}$．さらに，線型関係
+					\[
+						\sum_{i \in I' \subseteq I}f(b_i)\lambda_i = o_W \qquad (\#I' < \infty)
+					\]
+					において，
+					\[
+						\sum_{i \in I' \subseteq I}f(b_i)\lambda_i = f\left(\sum_{i\in I'\subseteq I}b_i\lambda_i\right) = o_W.
+					\]
+					$f$ が単射なら $\ker f = \{o_V\}$ より上式から $\sum_{i\in I'\subseteq I}b_i\lambda_i = o_V$．$\{b_i\}_{i\in I}$ は $V$ の基底であるから任意の $i\in I'$ において $\lambda_i = 0$ が従う．よって $\big\{f(b_i)\big\}_{i\in I}$ は線型独立である．逆に$\big\{f(b_i)\big\}_{i\in I}$ は線型独立であれば，
+					\[
+						x = \sum_{i_1\in I_1\subseteq I}b_{i_1}\lambda_{1i_1},
+						\qquad
+						y = \sum_{i_2\in I_2\subseteq I}b_{i_2}\lambda_{2i_2},
+						\qquad
+						(\# I_1,\# I_2 < \infty)
+					\]
+					に対して $f(x) = f(y)$ となるとき，$I' = I_1 \cup I_2$ もまた $I$ の有限部分集合で，各 $i' \in I'$ に対して
+					\[
+						\lambda'_{1i'} = \left\{
+							\begin{alignedat}{2}
+								& \lambda_{1i'} &\quad& \mbox{for $i' \in I_1$} \\
+								& 0 &\quad& \mbox{for $i' \in I'\setminus I_1$}
+							\end{alignedat}
+						\right.
+						\qquad
+						\lambda'_{2i'} = \left\{
+							\begin{alignedat}{2}
+								& \lambda_{2i'} &\quad& \mbox{for $i' \in I_2$} \\
+								& 0 &\quad& \mbox{for $i' \in I'\setminus I_2$}
+							\end{alignedat}
+						\right.
+					\]
+					とおくと
+					\[
+						f(x -y) = f\left(\sum_{i' \in I'}b_{i'}\lambda'_{1i'} -\sum_{i' \in I'}b_{i'}\lambda'_{2i'}\right) = \sum_{i'\in I'} f(b_{i'})(\lambda_{1i'} -\lambda_{2i'}) = o_W.
+					\]
+					よって任意の $i'$ において $\lambda_{1i'} -\lambda_{2i'} = 0$ であるから $x = y$ が従う．
+				</p>
+			</details>
+			$W$ の基底 $U = \{u_j\}_{j\in J}$ を選び $V$ の基底 $B$ 各元と $U$ との関係式
+			\[
+				f(b_i) = \sum_{j_i\in J_i\subseteq J}u_j (A_i)_{j_i} \qquad (\#J_i < \infty)
+			\]
+			が与えられたとする．そこで，直積集合 $J \times I$ の各元 $(j,i)$ に対して
+			\[
+				A_{(j,i)} = A_{ji} = \left\{
+					\begin{alignedat}{2}
+						& (A_i)_j	& \quad & \mbox{for $j \in J_i$} \\
+						& 0			& \quad & \mbox{for $j \in J\setminus J_i$}
+					\end{alignedat}
+				\right.
+			\]
+			と拡張すると，$V$ の任意の元 $v = \sum_{i\in I'}b_i\lambda_i$ を $f$ で写したものは
+			\[
+				f(v) = f\left(\sum_{i\in I'}b_i\lambda_i\right) = \sum_{i\in I'}f(b_i)\lambda_i = \sum_{i\in I'}\sum_{j\in J}u_j A_{ji} \lambda_i
+			\]
+			という形で完全に指定される．二重に添え字付けられたスカラーの族 $\{A_{ji}\}_{(j,i) \in J'\times I}$ を，$V,W$ の基底 $B,U$ に関する線型写像 $f$ の<strong>成分 (component) </strong>と謂う．
+		</p>
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">^</a></li>
+		</ol>	
+	</div>
+</body>
+</html>
