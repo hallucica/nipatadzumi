@@ -10,7 +10,7 @@ body {
 	/* ページ背景 */
 	background-image: url("./Assets/background_image.jpg");
 	background-size: 90vw 90vw;
-	background-position: 480px 0px;
+	background-position: 25vw 0;
 
 	/* フォント */
 	font-size: 2vh;
