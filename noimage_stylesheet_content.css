@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi:wght@700&family=Noto+Sans+JP:wght@300;700&family=Zen+Old+Mincho&display=swap');
+
+@media screen and (min-width: 819px) {
+	html {
+		font-size: 3vh;
+	}
+
+	body {
+		/* 基本構成 */
+		width: 94vw;
+		margin: 0 0;
+		padding-left: 4vh;
+		padding-right: 2vh;
+
+		/* ページ背景 */
+		background-color: transparent;
+
+		/* フォント */
+		font-size: 1rem;
+		font-family: 'Zen Old Mincho', serif;
+		color: #333631;
+
+		border: none;
+	}
+
+	/* ヘッディング */
+	h2 {
+		font-size: 2rem;
+		font-family: 'Kaisei HarunoUmi', serif;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		font-family: 'Noto Sans JP', sans-serif;
+		font-weight: 300;
+		text-align: center;
+	}
+
+	h4 {
+		font-size: 1.3rem;
+		font-family: 'Zen Old Mincho', serif;
+		font-weight: normal;
+	}
+
+	/* 本文 */
+	p {
+		text-indent: 1rem;
+		line-height: 1.75;
+	}
+
+	strong {
+		font-family: 'Noto Sans JP', sans-serif;
+		font-weight: 700;
+		color: #d3381c;
+	}
+
+	#footnote {
+		font-size: 0.85rem;
+		line-height: 1.5;
+	}
+
+	rt {
+		font-family: 'Zen Old Mincho', serif;
+		font-weight: normal;
+	}
+
+	li {
+		padding: 3pt 0;
+	}
+
+	details > p {
+		padding-left: 1.8rem;
+	}
+
+
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #ccb4b4;
+		border-radius: 5px;
+	}
+}
+
+@media screen and (max-width: 818px) {
+	html {
+		font-size: 3.5vw;
+	}
+
+	body {
+		/* 基本構成 */
+		width: 88vw;
+		margin: 0 0;
+		padding-left: 4vh;
+		padding-right: 2vh;
+
+		/* ページ背景 */
+		background-color: antiquewhite;
+
+		/* フォント */
+		font-size: 1rem;
+		font-family: 'Zen Old Mincho', serif;
+		color: #333631;
+
+		border: none;
+	}
+
+	/* ヘッディング */
+	h2 {
+		font-size: 2rem;
+		font-family: 'Kaisei HarunoUmi', serif;
+	}
+
+	h3 {
+		font-size: 1.5rem;
+		font-family: 'Noto Sans JP', sans-serif;
+		font-weight: 300;
+	}
+
+	h4 {
+		font-size: 1.3rem;
+		font-family: 'Zen Old Mincho', serif;
+		font-weight: normal;
+	}
+
+	/* 本文 */
+	p {
+		text-indent: 1rem;
+		line-height: 1.75;
+	}
+
+	strong {
+		font-family: 'Noto Sans JP', sans-serif;
+		font-weight: 700;
+		color: #d3381c;
+	}
+
+	#footnote {
+		font-size: 0.85rem;
+		line-height: 1.5;
+	}
+
+	rt {
+		font-family: 'Zen Old Mincho', serif;
+		font-weight: normal;
+	}
+
+	li {
+		padding: 3pt 0;
+	}
+
+	details > p {
+		padding-left: 1.8rem;
+	}
+
+
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #ccb4b4;
+		border-radius: 5px;
+	}
+}
