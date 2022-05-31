@@ -142,7 +142,7 @@
 
 	#content {
 		width: 100%;
-		height: 73vh;
+		height: 60vh;
 		min-height: 480px;
 		border: solid #e6d9ba;
 
@@ -159,7 +159,7 @@
 	#overlayMenu {
 		position: absolute;
 		left: 0; top: 0;
-		width: 100%; height: fit-content; min-height: 100%;
+		width: 100%; height: fit-content; min-height: 120%;
 
 		background-color: #432f2fef;
 
