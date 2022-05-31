@@ -190,12 +190,12 @@
 
 		margin: 20px auto;
 		padding: 6px 16px;
-		height: 48px;
-		width: 120px;
+		height: 42px;
+		width: 100px;
 		
 		background-color: transparent; /* 背景色 */
 
-		font-size: 0.8em; /* フォントサイズ */
+		font-size: 0.5em; /* フォントサイズ */
 		color: #f8f4e6; /* テキストカラー */
 		font-family: 'Kaisei HarunoUmi', serif;
 		cursor: pointer; /* カーソルを指マークに */
@@ -213,7 +213,7 @@
 	/* フッター */
 	#footer {
 		margin-top: 16px;
-		height: 4vh;
+		height: 3.6vh;
 		width: 100%;
 		
 		font-size: 1rem;
@@ -235,12 +235,12 @@
 
 		margin: 20px auto;
 		padding: 6px 16px;
-		height: 48px;
-		width: 120px;
+		height: 42px;
+		width: 100px;
 		
 		background-color: #f8f4e6; /* 背景色 */
 
-		font-size: 0.8em; /* フォントサイズ */
+		font-size: 0.5em; /* フォントサイズ */
 		color: #333631; /* テキストカラー */
 		font-family: 'Kaisei HarunoUmi', serif;
 		cursor: pointer; /* カーソルを指マークに */
