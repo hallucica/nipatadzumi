@@ -205,15 +205,88 @@
 	}
 
 	/* 本文 */
-	p {
+	/* :::::::::::::::: 本文の段落 :::::::::::::::: */
+	div.paragraph {
 		text-indent: 1rem;
 		line-height: 1.75;
 	}
 
-	strong {
+
+	/* :::::::::::::::: 折りたたみテキスト :::::::::::::::: */
+	details.extra summary {
+		height: fit-content;
+		border: solid #666600 2pt;
+		border-radius: 12pt;
+	}
+	details.extra div.paragraph {
+		padding-left: 1.5rem;
+		border-left: solid #666600 2pt;
+		border-bottom: solid #666600 2pt;
+	}
+
+	details.proof summary {
+		height: fit-content;
+		border: solid #996699 2pt;
+		border-radius: 12pt;
+	}
+	details.proof div.paragraph {
+		padding-left: 1.5rem;
+		border-left: solid #996699 2pt;
+		border-bottom: solid #996699 2pt;
+	}
+
+
+	/* :::::::::::::::: 定理環境など :::::::::::::::: */
+	fieldset.def {
+		border-left: solid #336699 8pt;
+		border-top: none;
+		border-right: none;
+		border-bottom: none;
+		padding-left: 1rem;
+	}
+	fieldset.def legend {
+		padding-right: 2.5rem;
+		font-family: 'Kaisei HarunoUmi', serif;
+		font-size: 1.2rem;
+		border-bottom: solid #336699 2pt;
+	}
+	fieldset.thm {
+		border-left: solid #990099 8pt;
+		border-top: none;
+		border-right: none;
+		border-bottom: none;
+		padding-left: 1rem;
+	}
+	fieldset.thm legend {
+		padding-right: 2.5rem;
+		font-family: 'Kaisei HarunoUmi', serif;
+		font-size: 1.2rem;
+		border-bottom: solid #990099 2pt;
+	}
+	fieldset.prop {
+		border-left: solid #669933 8pt;
+		border-top: none;
+		border-right: none;
+		border-bottom: none;
+		padding-left: 1rem;
+	}
+	fieldset.prop legend {
+		padding-right: 2.5rem;
+		font-family: 'Kaisei HarunoUmi', serif;
+		font-size: 1.2rem;
+		border-bottom: solid #669933 2pt;
+	}
+
+
+	/* :::::::::::::::: 強調 :::::::::::::::: */
+	strong.kw {
 		font-family: 'Noto Sans JP', sans-serif;
 		font-weight: 700;
 		color: #d3381c;
+	}
+	strong.emph {
+		font-family: 'Noto Sans JP', sans-serif;
+		font-family: 700;
 	}
 
 	#footnote {
@@ -228,10 +301,6 @@
 
 	li {
 		padding: 3pt 0;
-	}
-
-	details > p {
-		padding-left: 1.8rem;
 	}
 
 
