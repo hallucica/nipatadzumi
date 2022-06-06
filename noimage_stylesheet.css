@@ -62,10 +62,15 @@
 		font-size: 1.4rem;
 	}
 	#menu ul {
-		list-style-type: none;
+		list-style-type: '❧';
+		padding-left: 25px;
 	}
-	#menu li {
+	#menu ul li {
 		font-size: 0.9rem;
+		padding-left: 0.8rem;
+	}
+	#crcl {
+		display: none;
 	}
 
 	#content {
@@ -82,10 +87,6 @@
 		border: none;
 	}
 
-	/* スマホ用のオーバーレイメニューは非表示 */
-	#overlayMenu {
-		display: none;
-	}
 	/* メニューボタンを非表示 */
 	#menuOpenButton {
 		display: none;
@@ -138,14 +139,42 @@
 
 	}
 
-	/* サイドバーメニューは非表示 */
+	/* メニューをオーバーレイに */
 	#menu {
+		position: absolute;
+		left: 0; top: 0;
+		width: 100%; height: 100%;
+
+		background-color: #432f2fef;
+
+		color: #f8f4e6;
+		font-family: 'Zen Old Mincho', serif;
+		font-size: 1.2rem;
+
 		display: none;
+		z-index: -1;
+	}
+	#menu h4 {
+		text-align: center;
+		font-family: 'Kaisei HarunoUmi', serif;
+		font-size: 1.5rem;
+	}
+	#menu ul {
+		list-style-type: '❧';
+		padding-left: 25px;
+	}
+	#menu ul li {
+		font-size: 0.9rem;
+		padding-left: 0.8rem;
+	}
+
+	#menu a {
+		color: #00a381;
 	}
 
 	#content {
 		width: 100%;
-		height: 60vh;
+		height: 73vh;
 		min-height: 480px;
 		border: solid #e6d9ba;
 
@@ -154,8 +183,7 @@
 	#content iframe {
 		width: 100%;
 		height: 100%;
-
-		box-shadow: inset 2px 2px 5px 0px #cca97a;
+		border: none;
 	}
 
 	/* オーバーレイメニュー */
@@ -183,7 +211,7 @@
 		color: #00a381;
 	}
 
-	#overlayContent {
+	#menuContent {
 		padding: 24px 16px;
 	}
 
