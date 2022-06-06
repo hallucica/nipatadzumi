@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>群の作用</title>
+</head>
+<body>
+	<h2>群の作用</h2>
+ 
+	<h3>一般変換群への準同型</h3>
+	<div class="paragraph">
+		群はその定義の単純さゆえに非常に広範な応用を持つけれども，そのひとつが「集合の変換をある種の群と見做す」というものだ．そもそも集合 $X$ の上の変換 (全単射 $X \to X$ のこと) 全体は写像の合成に関して群を成す．それを $X$ の<strong class="kw">一般変換群</strong>あるいは<strong class="kw">対称群</strong>と呼び．記号 $\mathfrak S_X$ で表す．「一般」と付くだけあって一般変換群自体は特殊な構造は持たないが，そこにもっと具体的で性質のよく知れた群 $G$ からの準同型写像が存在すれば，それを介して，<strong class="emph">$X$ 上の変換の一部が成す構造を特殊な群 $G$ の構造を用いて記述</strong>できる．これが群の<strong class="kw">作用 (action) </strong>と謂う考え方というわけだ．この定義を改めて述べると次のようになる：
+		<fieldset class="def">
+			<legend>定義：群作用</legend>
+			<div class="paragraph">
+				群 $G$ が集合 $X$ に<strong class="kw">作用する</strong>とは，$G$ から $X$ の一般変換群 $\mathfrak S_X$ への準同型写像 $\varphi : G \to \mathfrak S_X$ が存在することを謂う．このとき，三つ組 $(X,G,\varphi)$ を $G$ の $X$ への<strong class="kw">群作用 (group action) </strong>あるいは単に<strong class="kw">作用 (action) </strong>と呼ぶ．紛れの<ruby>虞<rp>(</rp><rt>おそれ</rt><rp>)</rp></ruby>が無ければ準同型 $\varphi$ を省いて単に組 $(X,G)$ で作用を表すこともある．
+			</div>
+		</fieldset>
+	</div>
+
+	<h3>右作用と左作用</h3>
+	<div class="paragraph">
+		群作用というものを，集合 $X$ 上の群 $G$ を用いて定まる外部二項演算として定めることも出来る．写像 $\varphi : X \times G \to X$ を $\varphi(x,g) = \varphi_g(x)$ で定めると，上の二条件から
+		<ul>
+			<li>$\forall x \in X \big( \varphi(x,e) = x \big)$．</li>
+			<li>$(\forall x \in X)(\forall g,h\in G) \Big( \varphi(x,gh) = \varphi\big(\varphi(x,g), h\big) \Big)$．</li>
+		</ul>
+		となる．$\varphi(x,g)$ を単に $xg$ と書くことにすれば，
+		<ul style="list-style-type: none;">
+			<li>(RA1) $\forall x \in X( xe = x )$．</li>
+			<li>(RA2) $(\forall x \in X)(\forall g,h \in G)\big( x(gh) = (xg)h \big)$．</li>
+		</ul>
+		このような場合，群 $G$ は集合 $X$ に右から作用すると謂い，$X$ は右-$G$ 集合であると謂う．一方，$\mathcal L : G \times X \to X$ を $\mathcal L(x,g) = \varphi_g(x)$ と定めることも勿論可能で，この場合 $\mathcal L(g,x)$ を $gx$ と書くことにすれば，
+		<ul style="list-style-type: none;">
+			<li>(LA1) $\forall x \in X(ex = x)$．</li>
+			<li>(LA2) $(\forall x \in X)(\forall g,h \in G)\big( (gh)x = h(gx) \big)$．</li>
+		</ul>
+		このような場合，群 $G$ は集合 $X$ に左から作用すると謂い，$X$ は左-$G$ 集合であると謂う．群 $G$ が可換なら右作用と左作用の概念は一致するが，実は，$G$ が可換でなくとも右作用と左作用の間に本質的な違いは無い; 右作用 $\mathcal R$ に対して，同型 $J : G \to G; \; g \mapsto g^{-1}$ を用いて外部二項演算 $\mathcal L : G \times X \to X$ を
+		\[
+			gx = \mathcal L(g, x) = \mathcal R(x,J(g)) = \mathcal R(x,g^{-1}) = xg^{-1}
+		\]
+		と定義する．すると
+		\[
+			\begin{aligned}
+				ex &= xe^{-1} = xe = x, \\
+				(gh)x &= x(gh)^{-1} = x(h^{-1}g^{-1}) = (xh^{-1})g^{-1} = g(hx)
+			\end{aligned}
+		\]
+		よりこれは左作用になっていることが判る．このため右作用に関して成り立つ事柄は直ちに左作用についても成り立つ．
+		
+		<details>
+			<summary>脱線：群以外の代数的構造の作用</summary>
+			<div class="paragraph">
+				以上の群の作用の定義を拡張して，何らかの代数的構造からの作用を定義することができる．例えば，環 $R$ が集合 $X$ に右から作用することを，三つの条件
+				<ol>
+					<li>$\forall x \in X (x1 = x)$．</li>
+					<li>$(\forall x \in X)(\forall a,b\in R) \big( x(a +b) = xa +xb \big)$．</li>
+					<li>$(\forall x \in X)(\forall a,b\in R) \big( x(ab) = (xa)b \big)$．</li>
+				</ol>
+				によって定義することができる．環の作用の最たる例は，環上の加群に定められるスカラー乗法だろう．加群のスカラー乗法は環の作用であって線型性 $(x +y)a = xa +ya$ を満たすものとして定義される．上と同様にして環の左作用を定義することも出来るが，環の作用の場合右作用と左作用が両方あってもそれらがいつでも一致するとは限らない．しかし $R$ が可換環なら右作用と左作用は自然に一致するので，左右の区別を気にせず単に $R$-加群と呼ぶ．加群の特別な場合である線型空間は体 $\mathbb K$ が環としてアーベル群に作用したものだ．この場合，体には乗法の可換性が要請されているから右作用と左作用の区別をつける必要はない．
+			</div>
+		</details>
+	</div>
+
+	<h3>特殊な性質を持つ群作用</h3>
+	<div class="paragraph">
+		しばしば群作用 $(X,G,\varphi)$ に要請される特殊な条件について述べよう．まず，異なる $G$ の 2 元は異なる $X$ の変換に対応するとき，写像 $\varphi : G \to \mathfrak S_X$ が単射であるとき，群作用 $(X,G,\varphi)$ は<strong class="kw">忠実 (faithful) </strong>あるいは<strong class="kw">効果的 (effective) </strong>であると謂う．準同型写像が単射であることは，その核が自明であることと必要十分で，いまの文脈では $X$ 上の恒等変換に対応するのは $G$ の単位元のみである，という事を云っている．次に，任意の 2 元 $x,y \in X$ に対して $y = xg$ となる元 $g \in G$ が必ず存在するとき，群作用 $(X,G,\varphi)$ は<strong class="kw">推移的 (transitive) </strong>であると謂う (これは $\varphi$ が全射であることとは異なることに注意しよう)．$X$ から元 $x_0,x_1,x_2,\dots$ と選んだとき，<ruby>各<rp>(</rp><rt>おのおの</rt><rp>)</rp></ruby>の変換 $x_0 \mapsto x_1, \; x_1 \mapsto x_2,\dots$ を定める $G$ の元 $g_1,g_2,\dots$ が存在するので「推移的」と呼ぶのだろう．効果的かつ推移的な作用は<strong class="kw">単純推移的</strong>であると謂って，この場合は任意の $x,y\in X$ に対して $y = xg$ なる元 $g \in G$ は一意に定まる：もし $g' \in G$ が存在して $y = xg'$ となるなら，
+		\[
+			xg = xg'
+			\quad\Longrightarrow\quad
+			x(g{g'}^{-1}) = x
+			\quad\Longrightarrow\quad
+			g{g'^{-1}} = e
+			\quad\Longrightarrow\quad
+			g = g'
+		\]
+		となるから．
+	</div>
+
+	<h3>軌道と安定化部分群</h3>
+	<div class="paragraph">
+		集合 $X$ に群 $G$ の作用 $(X,G)$ があるとき，元 $x \in X$ を含む<strong class="kw">軌道</strong>と呼ばれる部分集合
+		\[
+			Gx = \bigl\{ xg \bigm| g \in G\bigr\}
+		\]
+		が定められる．定義より明らかに，$X$ の任意の元が唯一つの軌道に属すること &mdash;&mdash; すなわち軌道が $X$ 全体になることと，作用が推移的であることは同値である．一般には $X$ は互いに交わらない軌道たちの和集合として書かれる：2 元 $x,y \in G$ が同一の軌道に属するという二項関係は同値関係であり<sup id="ref_1"><a href="#note_1">*1</a></sup>，その同値類は軌道 $Gx$ に他ならないから．軌道 $Gx$ はその定義より，$G$ の任意の元を作用させても集合としては同じものになる，という性質を持つ．より一般に，$X$ の部分集合 $Y$ に対して集合
+		\[
+			GY = \bigl\{ yg \bigm| y\in Y, g \in G \bigr\}
+		\]
+		が $Y$ に一致する，言い換えれば任意の $y \in Y$ にどんな $g \in G$ を作用させても再び $Y$ の元となるとき，$Y$ は $G$ の作用に関して<strong class="kw">安定 (stable) </strong>あるいは<strong class="kw">不変 (invariant) </strong>であると謂う．さらに強い条件として，任意の $y\in Y$ に対して
+		\[
+			\forall g\in G(yg = y)
+		\]
+		が成り立つ場合は $Y$ が $G$ の作用で<strong class="kw">固定される (fixed) </strong>と謂う．一元集合 $\{x\} \;(x\in X)$ を固定するような $g \in G$ の全体は $G$ の部分群となり，これを $x$ の<strong class="kw">安定化部分群 (stabilizer subgroup) </strong>と謂う．
+	</div>
+
+	<h3>作用の同値</h3>
+	<div class="paragraph">
+		群 $G$ が二つの集合 $X,Y$ に対してそれぞれ作用 $(X,G,\varphi), \; (Y,G,\psi)$ を持っているとき，それらが一定の意味で同一視できる場合がある．それは具体的には次の意味になる：
+		<fieldset class="def">
+			<legend>定義：作用の同値</legend>
+			<div class="paragraph">
+				群 $G$ の二つの作用 $(X,G,\varphi), \; (Y,G,\psi)$ が<strong class="kw">同値</strong>であるとは，全単射 $\theta : X \to Y$ であって，任意の $g\in G$ に対し等式
+				\[
+					\theta \circ \varphi_g = \psi_g \circ \theta
+				\]
+				を充たす $\theta$ が存在することを謂う．このような写像 $\theta$ は $G$-同変写像 ($G$-equivalent map) と呼ばれる．
+			</div>
+		</fieldset>
+		上式は次のようにも書ける：任意の $x \in X$ に対して
+		\[
+			\theta\big(\varphi_g(x)\big) = \theta(xg) = \theta(x)g = \psi_g\big(\theta(x)\big).
+		\]
+		これはつまり，代数的構造の間の同型写像に類似した条件が成り立つべきことを云っているのだ．
+	</div>
+
+	<div class="paragraph">
+		以上の概念を運用し，続く頁の古典幾何学の理論では，私たちが何気なく「空間」と呼んでいるものを，点の集合に対してある種の作用を考えたものとして定義づける．その作用を定めるのは &mdash;&mdash; 線型空間なのである．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> この同値関係により $X$ を割った商集合は $X/G$ と書かれ，<strong class="kw">軌道空間 (orbit space) </strong>あるいは<strong class="kw">余不変式の空間 (space of coinvariant) </strong>と呼ばれる．</li>
+		</ol>	
+	</div>
+</body>
+</html>
