@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>部分空間の次元定理</title>
+</head>
+<body>
+	<h2>部分空間の次元定理</h2>
+	
+	<h3>交空間と和空間</h3>
+	<div class="paragraph">
+		アファイン空間 $(X,V)$ の部分空間 $(Y,W)$ において 1 点 $a \in Y$ をとれば，$Y$ は点 $a$ の $W$ による軌道だから
+		\[
+			Y = \bigl\{ a +\bm w \in Y \bigm| \bm w \in W \bigr\}
+		\]
+		と書ける．あるいは，<a href="./affine_space.html#translation">前頁で用いた写像</a> $\varTheta_a : V \to X; \; \bm v \to a +\bm v$ で述べれば，$Y$ は $\varTheta_a$ による $W$ の像である：$Y = \varTheta_a(W)$．ゆえに，二つの部分空間 $(Y_1,W_1)$ と $(Y_2,W_2)$ があって $Y_1 \subseteq Y_2$ であるならば，それぞれに逆写像 ${\varTheta_a}^{-1}$ を用いることで $W_1 \subseteq W_2$ を得る．このことを用いると，部分空間の族 $\big\{(Y_\lambda,W_\lambda)\big\}_{\lambda\in\Lambda}$ があってその交わり $\bigcap_{\lambda\in\Lambda} Y_\lambda$ が空集合でなければ，それに線型部分空間 $\bigcap_{\lambda\in\Lambda}W_\lambda$ が単純推移的に作用してアファイン部分空間となる．これを族 $\big\{(Y_\lambda,W_\lambda)\big\}_{\lambda\in\Lambda}$ の<strong class="kw">交空間</strong>と謂い，記号 $\bigcap_{\lambda\in\Lambda}Y_\lambda$ で表す：
+		\[
+			\label{eq: 交空間}
+			\bigcap_{\lambda\in\Lambda}Y_\lambda = Y_1 \cap Y_2 \cap \dotsm = \left(\bigcap_{\lambda\in\Lambda} Y_\lambda, \; \bigcap_{\lambda\in\varLambda} W_\lambda \right).
+			\tag{1}
+		\]
+		3 次元実アファイン空間 $(X,\mathbb R^3)$ を例に引いて考えると，例えばこの中に 2 つの平面 $\pi_1,\pi_2$ があって，それぞれに線型部分空間 $W_1,W_2$ (次元は $2$) が付属するとするとき，$\pi_1 \cap \pi_2 \neq \emptyset$ であれば，それに線型部分空間 $W_1 \cap W_2$ が付属して部分空間となる．$W_1 = W_2$ なら 2 平面は完全に重なるし，$W_1 \cap W_2$ が $1$ 次元なら 2 平面の交わりは直線になる．しかし $W_1 \cap W_2 = \{\bm 0\}$ の場合は存在しえない：もしそうなら和 $W_1 +W_2$ は直和になってその次元は $2 +2 = 4$ となり，全体空間の次元 $3$ を超えてしまうから．3 次元空間における 2 平面の位置関係として，重ならない (平行)，交わりが直線を成す，全体がぴったり一致する，の 3 通りあるという結果を得た．
+	</div>
+	<div class="paragraph">
+		一方，部分空間の族 $\mathscr Y = \big\{(Y_\lambda,W_\lambda)\big\}_{\lambda\in\Lambda}$ すべてを含むような部分空間全体の交空間をとれば，それは族 $\big\{(Y_\lambda,W_\lambda)\big\}_{\lambda\in\Lambda}$ を含む最小のアファイン部分空間となる<sup id="ref_1"><a href="#note_1">*1</a></sup>．それを族 $\big\{(Y_\lambda,W_\lambda)\big\}_{\lambda\in\Lambda}$ の<strong class="kw">和空間</strong>と謂い，記号 $\bigvee_{\lambda\in\Lambda}Y_\lambda$ で表す：
+		\[
+			\label{eq: 和空間}
+			\bigvee_{\lambda\in\Lambda} Y_\lambda = Y_1 \vee Y_2 \vee \dotsm \vee = \bigcap_{\mathscr Y \subseteq A \subseteq X} A.
+			\tag{2}
+		\]
+		なんだか，交空間の定義式 \eqref{eq: 交空間} と較べると随分と抽象的な式だ．交空間の場合にはそれに付属する線型部分空間が明らかだったが，上の定義式では和空間に付属する線型部分空間がよく分からない．しかしアファイン部分空間の交空間に線型部分空間の交空間が付属したことから，アファイン部分空間の和空間には線型部分空間の和空間が付属して，次元もそれで決まりそうだ．実際にはもう少し事情が複雑で，次の定理が成り立つ：
+	</div>
+
+	<h3 id="dimension_theorem_of_subspace">アファイン部分空間の次元定理</h3>
+	<fieldset class="thm">
+		<legend>定理：アファイン部分空間の次元定理</legend>
+		<div class="paragraph">
+			$(Y_1,W_1), \; (Y_2,W_2)$ をそれぞれアファイン空間 $(X,V)$ の部分空間とする．このとき，次が成り立つ：
+			<ol style="list-style-type: upper-roman;">
+				<li>
+					$Y_1 \cap Y_2 \neq \emptyset$ ならば和空間 $Y_1 \vee Y_2$ には $W_1 +W_2$ が付属して，次元について次が成り立つ：
+					\[
+						\label{eq: dimension_theorem_1}
+						\dim(Y_1 \vee Y_2) = \dim Y_1 +\dim Y_2 -\dim(Y_1 \cap Y_2).
+						\tag{3-1}
+					\]
+				</li>
+				<li>
+					$Y_1 \cap Y_2 = \emptyset$ ならば和空間 $Y_1 \vee Y_2$ には $y_1 \in Y_1, \; y_2 \in Y_2$ として線型部分空間 $W_1 +W_2 +\mathbb K\overrightarrow{y_1y_2}$ が付属し，次元について次が成り立つ：
+					\[	
+						\label{eq: dimension_theorem_2}
+						\dim(Y_1 \vee Y_2) = \dim Y_1 +\dim Y_2 -\dim(W_1 \cap W_2) +1.
+						\tag{3-2}
+					\]
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+
+	<details class="proof">
+		<summary>［証明］</summary>
+		<div>
+			<div class="paragraph">
+				まず I. の場合，$Y_1 \vee Y_2 \neq \not \emptyset$ に付属する線型部分空間を $W$ とすると包含関係 $Y_1 \vee Y_2 \supseteq Y_1,Y_2$ から $W \supseteq W_1,W_2$，ゆえに $W \supseteq W_1 +W_2$ である．一方，1 点 $a\in Y_1 \cap Y_2$ を選ぶとき，その点の $W$ による軌道 $a +(W_1 +W_2)$ は，軌道 $a +W_1, \; a +W_2$，つまり $Y_1,Y_2$ を含まなければならないから，$a +(W_1 +W_2) \supseteq Y_1 \vee Y_2$，ゆえに $W_1 +W_2 \supseteq W$．これらより $W = W_1 +W_2$ を得る．また，線型部分空間に対する次元定理
+				\[
+					\dim(W_1 +W_2) = \dim W_1 +\dim W_2 -\dim(W_1 \cap W_2)
+				\]
+				を考えると，$\dim(W_1 +W_2) = \dim(Y_1\vee Y_2)$，$\dim(W_1 \cap W_2) = \dim(Y_1\cap Y_2)$，および $\dim Y_1 = \dim W_1$，$\dim Y_2 = \dim W_2$ から定理の等式を得る．
+			</div>
+			<div class="paragraph">
+				次に II. の場合，$Y_1\vee Y_2$ に付属する線型部分空間 $W$ に対し，$\bm t = \overrightarrow{y_1y_2}$ とおくとき明らかに $W' = W_1 +W_2 +\mathbb K\bm t \subseteq W$ である：$W_1$ の元も $W_2$ の元も，そしてベクトル $\bm t$ も全て $Y_1 \vee Y_2$ の 2 点に対して定まるから．一方で，$y_1$ を含む $W'$ の軌道は $Y_1$ を含み，かつ $Y_2$ の任意の点は $y_1 +(W_2 +\bm t)$ の形で書けることからこれは $Y_2$ をも含んでいる．よって $W' \supseteq W$，すなわち $W' = W$ である．2 つの線型部分空間 $W_1 +W_2,\mathbb K\bm t$ の交わりは $\{\bm 0\}$ であるから，$\dim(W_1 +W_2 +\mathbb K\bm t) = \dim(W_1 +W_2) +1$．ゆえに
+				\[
+					\begin{aligned}
+						\dim(Y_1\vee Y_2) &= \dim(W_1 +W_2 +\mathbb K\bm t) \\
+						&= \dim W_1 +\dim W_2 -\dim(W_1 \cap W_2) +1 \\
+						&= \dim Y_1 +\dim Y_2 -\dim(W_1 \cap W_2) +1
+					\end{aligned}
+				\]
+				となって定理の等式を得る．█
+			</div>
+		</div>
+	</details>
+	<div class="paragraph">
+		再び，$3$ 次元実アファイン空間 $(X,\mathbb R^3)$ の場で具体例を見てみよう．二つの平面 $\pi_1,\pi_2$ があって交わっている場合，それぞれの平面に付属する線型空間 $W_1,W_2$ はたとえば $\bm a_1,\bm a_2,\bm b \in \mathbb R^3$ に対して $W_1 = \span\{\bm a_1,\bm b\}, \; W_2 = \span\{\bm a_2,\bm b\}$ と書けて，このとき和空間 $\pi_1 \vee \pi_2$ には $W_1 +W_2 = \span\{\bm a_1,\bm a_2,\bm b \}$ が付属し，その次元は $3$ となる; よってこの和空間は空間全体に一致する．空間内に<ruby>相異<rp>(</rp><rt>あいこと</rt><rp>)</rp></ruby>なる 2 点 $a,b$ が与えられれば，それらの和空間 $a\vee b$ は上定理の II. の場合に該当し，それには $\mathbb K\overrightarrow{ab}$ が付属して，その次元は $1$ である．これは<strong class="emph">空間内に相異なる 2 点をとればそれらを結ぶ直線が唯一つ定まる</strong>とう，ユークリッド幾何学の第一公準そのものだ．さらにこの直線上にない 1 点 $c$ とこの直線との和空間を考えれば，それには $\span\{\overrightarrow{ab},\;\overrightarrow{ac}\}$ が付属して $2$ 次元の部分空間，すなわち平面になる．これは<strong class="emph">空間内の相異なる 3 点に対して，それらを含む平面が唯一つ定まる</strong>，ということだ．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> この考え方は線型空間の和空間 (線型苞) 等でも使われた．</li>
+		</ol>	
+	</div>
+</body>
+</html>
