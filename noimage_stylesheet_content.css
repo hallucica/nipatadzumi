@@ -60,7 +60,7 @@
 		margin: 4pt 36pt;
 		padding: 4pt 1.5rem;
 
-		background-color: #cc9966;
+		background-color: #e9bc00;
 		box-shadow: 5px 5px 6px -1px #442706;
 	}
 
@@ -129,6 +129,7 @@
 	strong.emph {
 		font-family: 'Noto Sans JP', sans-serif;
 		font-family: 700;
+		color: #6666cc;
 	}
 
 
@@ -296,7 +297,9 @@
 	strong.emph {
 		font-family: 'Noto Sans JP', sans-serif;
 		font-family: 700;
+		color: #6666cc;
 	}
+
 
 	#footnote {
 		font-size: 0.85rem;
