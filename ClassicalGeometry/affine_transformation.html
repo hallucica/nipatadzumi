@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>アファイン変換</title>
+</head>
+<body>
+	<h2>アファイン変換</h2>
+	
+	<h3>アファイン空間の構造を保つ写像</h3>
+	<div class="paragraph">
+		<a href="./group_action.html" rel="noreferrer">群作用</a>の頁で，ひとつの群が 2 つの集合 $X,Y$ に作用するときの 2 つの作用 $(X,G,\varphi), \; (Y,G,\psi)$ の同値性を定義した．これは，群 $G$ の作用による構造を保つような全単射 $\varphi : X \to Y$ だった：
+		\[
+			\varphi \circ \varphi_g = \psi_g \circ \varphi, \qquad \forall g \in G
+		\]
+		こんどは，付属する線型空間も異なる 2 つの $\mathbb K$ 上のアファイン空間 $(X,V), \; (Y,W)$ について，一方をそのアファイン空間としての構造を保ったまま，もう一方の空間へ写すような写像を考えよう．群や線型空間の間の準同型写像と同じモチベーションだ．
+	</div>
+	<div class="paragraph">
+		まず，写像 $\varphi : X \to Y$ によってアファイン空間 $X$ 内の各点がアファイン空間 $Y$ 内の各点に写される．そして，$X$ の任意の 2 点 $p,q$ の間にはそれを結びつける平行移動を定めるベクトル $\overrightarrow{pq} \in V$ が必ず唯一つ存在するから，それに対して，$\varphi$ による $p,q$ の像 $\varphi(p), \; \varphi(q)$ に対して定まるベクトル $\overrightarrow{\varphi(p)\varphi(q)} \in W$ が唯一つ対応するべきだ．また，この付属する線型空間同士の対応を $\varphi' : V \to W$ で書くと，アファイン空間の構造を保つためには，3 点 $p,q,r \in X$ に対して
+		\[
+			\overrightarrow{pq} +\overrightarrow{qr}
+			\; \stackrel{\varphi'}{\longmapsto} \;
+			\overrightarrow{\varphi(p)\varphi(q)} +\overrightarrow{\varphi(q)\varphi(r)},
+			\qquad
+			\lambda\overrightarrow{pq}
+			\; \stackrel{\varphi'}{\longmapsto} \;
+			\lambda\overrightarrow{\varphi(p)\varphi(q)}
+		\]
+		と対応すべきだろう &mdash;&mdash; つまり，写像 $\varphi' : V \to W$ は線型であるべきだ．そうすれば，アファイン空間 $X$ における式
+		\[
+			q = p +\bm v
+			\qquad p,q \in X, \bm v \in V
+		\]
+		が $\varphi : X \to Y$ と $\varphi' : V \to W$ を介して，アファイン空間 $Y$ における式
+		\[
+			\varphi(q) = \varphi(p) +\varphi'(\bm v)
+		\]
+		と翻訳されることになる．以上のことを踏まえて「アファイン写像」の概念を導入しよう：
+		<fieldset class="def">
+			<legend>定義：アファイン写像／アファイン変換</legend>
+			<div>
+				<div class="paragraph">
+					$(X,V), \; (Y,W)$ はそれぞれ $\mathbb K$ 上のアファイン空間とする．このとき，写像 $\varphi : X \to Y$ であって，対応する線型写像 $\varphi' : V \to W$ が存在して
+					\[
+						\label{eq: アファイン写像}
+						\varphi(x +\bm v) = \varphi(y) +\varphi'(\bm v),
+						\quad\forall x \in X, \; \bm v \in V
+						\tag{1}
+					\]
+					が成り立つようなものを，$(X,V)$ から $(Y,W)$ への<strong class="kw">アファイン写像 (affine map) </strong>と謂う．このとき線型写像 $\varphi'$ はアファイン写像 $\varphi$ に<strong class="kw">付属する線型写像</strong>と謂う．
+				</div>
+				<div class="paragraph">
+					アファイン空間 $(X,V)$ から自身へのアファイン写像は特に<strong class="kw">アファイン変換 (affine transformation) </strong>と謂い，それが全単射 (ゆえに可逆) なら<strong class="kw">正則アファイン変換</strong>と謂う．
+				</div>
+			</div>
+		</fieldset>
+		<dl>
+			<dt>例 1.</dt>
+			<dd>アファイン空間 $(X,V)$ とその部分空間 $(Y,W)$ に対し，包含写像 $\iota : Y \to X$ には線型空間の埋め込み $\iota' : W \to V$ が付属してアファイン写像となる．</dd>
+		</dl>
+	</div>
+
+	<h3 id="affine_group">アファイン変換群</h3>
+	<div class="paragraph">
+		群作用の頁の冒頭では集合 $X$ の上の全単射のことを $X$ 上の変換と呼んだが，この意味では $X$ 上の正則アファイン変換も $X$ 上の変換の一種だ．$X$ 上の変換全体は一般変換群という群を成すが，上述の通り特殊な条件をもつ正則アファイン変換全体はどうなっているだろうか (答えは段落見出しに出てしまっているが)．それを調べるために 2 つの補題を準備しよう：
+		<fieldset class="prop">
+			<legend>補題：アファイン変換の合成</legend>
+			<div class="paragraph">
+				$(X,U), \; (Y,V), \; (Z,W)$ をそれぞれ $\mathbb K$ 上のアファイン空間とし，$\varphi : X \to Y, \; \psi : Y \to Z$ をそれぞれアファイン変換とする．このとき，合成写像 $\psi \circ \varphi$ には線型写像 $\psi' \circ \varphi'$ が付属して，$(X,U)$ から $(Z,W)$ へのアファイン変換となる．
+			</div>
+		</fieldset>
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div class="paragraph">
+				$x \in X$，$\bm u \in U$ に対し，
+				\[
+					\begin{aligned}
+					\psi(\varphi(x +\bm u)) &= \psi\big( \varphi(x) +\varphi'(\bm u) \big) = \psi(\varphi(x)) +\psi'(\varphi'(\bm u)) \\
+					&= (\psi\circ\varphi)(x) +(\psi'\circ\varphi')(\bm u)
+					\end{aligned}
+				\]
+				となることから従う．█
+			</div>
+		</details>
+
+		<fieldset class="prop">
+			<legend>補題：アファイン写像が可逆であるための必要十分条件</legend>
+			<div class="paragraph">
+				$(X,V), \; (Y,W)$ を $\mathbb K$ 上のアファイン空間とする．アファイン写像 $\varphi : X \to Y$ が全単射であることと，付属する線型写像 $\varphi' : V \to W$ が全単射であることとは必要十分であり，このとき逆写像 $\varphi^{-1} : Y \to X$ には ${\varphi'}^{-1} : W \to V$ が付属してアファイン写像となる．
+			</div>
+		</fieldset>
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div>
+				<div class="paragraph">
+					アファイン写像 $\varphi$ が全単射であるとする．アファイン空間 $X$ に定点 $o$ を選ぶとき，各 $\bm v \in V$ に対して $\varphi(o +\bm v) = \varphi(o) +\varphi'(\bm v)$ であり，これと $\varphi$ の全射性より
+					\[
+						Y = \varphi(X) = \varphi(o) +\varphi'(V).
+					\]
+					一方で $Y$ は点 $\varphi(o)$ を含む $W$ の軌道であるから，$W = \varphi'(V)$，すなわち $\varphi'$ は全射．また，$\bm u,\bm v \in V$ に対して $\varphi(o +\bm u) = \varphi(o +\bm v)$ とすると
+					\[
+						\varphi(o +\bm u) = \varphi(o) +\varphi'(\bm v) = \varphi(o) +\varphi'(\bm v) = \varphi(o +\bm v)
+					\]
+					であるから $\varphi'(\bm u) = \varphi'(\bm v)$．一方で $\varphi$ の単射性より上式が成り立つのは $o +\bm u = o +\bm v$ すなわち $\bm u = \bm v$ となるときに限る．よって $\varphi'$ は全単射．
+				</div>
+				<div class="paragraph">
+					逆に，付属する線型写像 $\varphi'$ が全単射であるとする．同様に定点 $o \in X$ を選ぶとき，今度は
+					\[
+						\varphi(X) = \varphi(o) +\varphi'(V) = \varphi(o) +W
+					\]
+					であるから $\varphi(X)$ は点 $\varphi(o) \in Y$ を含む $W$ の軌道，すなわち $Y$ に他ならない．よって $\varphi$ は全射．また，$o,p \in X$ に対して $\varphi(o) = \varphi(p)$ とすると，$\overrightarrow{op} = \bm v$ とすれば
+					\[
+						\varphi(p) = \varphi(o +\bm v) = \varphi(o) +\varphi'(\bm v) = \varphi(o) +\bm 0_W,
+					\]
+					ゆえに $\varphi'(\bm v) = \bm 0_W$．然るに $\varphi'$ は単射であるから $\bm v = \bm 0_V$，よって $p = o$ を得る：すなわち $\varphi$ は単射．
+				</div>
+				<div class="paragraph">
+					最後に，アファイン写像 $\varphi$ の逆写像 ${\varphi}^{-1}$ が存在すれば，$\varphi^{-1}(y +\bm w) = \varphi^{-1}(y) +\bm v$ とおくとき，
+					\[
+						y +\bm w = \varphi\big(\varphi^{-1}(y) +\bm v\big) = y +\varphi'(\bm v),
+					\]
+					ゆえに $\bm w = {\varphi'}^{-1}(\bm v)$，したがってまた $\varphi^{-1}(y +\bm w) = \varphi^{-1}(y) +{\varphi'}^{-1}(\bm w)$ が成り立ち，ゆえに $\varphi^{-1}$ には ${\varphi'}^{-1}$ が付属してアファイン写像となる．█
+				</div>
+			</div>
+		</details>
+	</div>
+	<div class="paragraph">
+		以上で準備は整った．上の 2 つの補題から，つぎの帰結が得られる：
+		<fieldset class="thm">
+			<legend>定理 & 定義：アファイン変換群</legend>
+			<div>
+				<ol style="list-style-type: upper-roman;">
+					<li>アファイン空間 $(X,V)$ 上の正則アファイン変換全体 $\mathrm{AF}(X)$ は，写像の合成に関して群を成す (ゆえに $X$ の一般変換群の部分群を成す)．これをアファイン空間 $X$ 上の<strong class="kw">アファイン変換群 (affine transformation group) </strong>と謂う．</li>
+					<li>アファイン変換 $\varphi \in \mathrm{AF}(X)$ に対し，付属する $\varphi'$ を対応させる写像を $\alpha$ とすると，$\alpha$ は $\mathrm{AF}(X)$ から $V$ 上の一般線型群 $\mathrm{GL}(V)$ への全射準同型写像である．</li>
+					<li>$X$ 上の平行移動の集合 $t(V) = \bigl\{ t_{\bm v} \bigm| \bm v \in V \bigr\}$ は I. の群 $\mathrm{AF}(X)$ の部分群であり，しかも II. の準同型写像 $\alpha$ の核に等しい． </li>
+				</ol>
+			</div>
+		</fieldset>
+		<details class="proof" open>
+			<summary>［証明］</summary>
+			<div>
+				<div class="paragraph">
+					先の 2 つの補題から，I. と II. の写像 $\alpha$ が準同型であることは明らか．$\bm v \in V$ による平行移動 $t_{\bm v}$ は
+					\[
+						\begin{aligned}
+							t_{\bm v}(x +\bm u) &= (x +\bm u) +\bm v = x +(\bm u +\bm v) \\
+							&= (x +\bm v) +\bm u = t_{\bm v}(x) +\bm u
+						\end{aligned}
+					\]
+					だからアファイン変換で，付属する線型写像は $\mathrm{id}_V$ である．これより III. が帰結される．
+				</div>
+				<div class="paragraph">
+					最後に，準同型 $\alpha : \mathrm{AF}(X) \to \mathrm{GL}(V)$ が全射であることを示す．$X$ に定点 $o$ を選び，$\varphi' \in \mathrm{GL}(V)$ に対して写像 $\varphi : X \to X$ を
+					\[
+						\label{eq: 定点 o の周りの線型変換}
+						\varphi(o +\bm v) = o +\varphi'(\bm v),
+						\tag{2}
+					\]
+					すなわち $o$ を不変にする写像として定義する．$\varphi'$ は $V$ 上の正則線型変換であるから，
+					\[
+						\varphi(X) = \varphi(o +V) = o +\varphi'(V) = o +V = X,
+					\]
+					つまり $\varphi$ は全射．また $\varphi(p) = \varphi(q)$ のとき，$p = o +\bm u$，$q = \bm v$ とおいて
+					\[
+						\varphi(p) = \varphi(o +\bm u) = o +\varphi'(\bm u) = o +\varphi'(\bm v) = \varphi(o +\bm v) = \varphi(q),
+					\]
+					これより $\varphi'(\bm u) = \varphi'(\bm v)$ であるから $\bm u = \bm v$，よって $p = q$．つまり $\varphi$ は単射．そして，任意の $x \in X$ に対して $\bm u \in V$ が一意に定まり $x = o +\bm u$ となることから，
+					\[
+						\begin{aligned}
+							\varphi(x +\bm v) &= \varphi(o +\bm u +\bm v) = o +\varphi'(\bm u +\bm v) \\
+							&= (o +\varphi'(u)) +\varphi'(\bm v) = \varphi(o +\bm u) +\varphi'(\bm v) \\
+							&= \varphi(x) +\varphi'(\bm v),
+						\end{aligned}
+					\]
+					ゆえに $\varphi$ はアファイン変換である．よって \eqref{eq: 定点 o の周りの線型変換} 式によって任意の $\varphi' \in \mathrm{GL}(V)$ に対して正則アファイン変換が定まることから，$\alpha$ は全射である．█
+				</div>
+			</div>
+		</details>
+		正則線型変換 $\varphi' \in \mathrm{GL}(V)$ に対して証明中の式 \eqref{eq: 定点 o の周りの線型変換} で定められる正則アファイン変換を，<strong class="kw">定点 $o$ の周りの線型変換</strong>と呼び，$o$ と $\varphi'$ によって定まるという意味で記号 $\varphi_o'$ で表す．
+	</div>
+
+	<h3>正則アファイン変換の分解</h3>
+	<div class="paragraph">
+		上の定理と群の第一同型定理によれば，アファイン空間 $(X,V)$ 上のアファイン変換群 $\mathrm{AF}(X)$ の $X$ 上の平行移動全体 $t(V)$ による剰余群 $\mathrm{AF}(X)/t(V)$ は一般線型群 $\mathrm{GL}(V)$ と同型である．よって，剰余群 $\mathrm{AF}(X)/t(V)$ の元となる剰余類は，同じ正則線型変換 $\varphi' \in \mathrm{GL}(V)$ によって定められる，$X$ 内の 1 点の周りの線型変換の集合
+		\[
+			L[\varphi'] = \bigl\{ \varphi'_o \bigm| o \in X \bigr\}
+		\]
+		だ．剰余群 $\mathrm{AF}(X)/t(V)$ の定義から，同じ同値類 $L[\varphi']$ に属する 2 つのアファイン変換 $\varphi_o', \; \varphi$ の間には ${\varphi_o'}^{-1}\circ \varphi \in t(V)$ なる関係があるから，ある $\bm v \in V$ を用いて $\varphi = t_{\bm v} \circ \varphi_o'$ と分解できる! この $\bm v$ は等式
+		\[
+			\varphi(o) = (t_{\bm v} \circ \varphi_o')(o) = t_{\bm v}(o) = o +\bm v
+		\]
+		から $\bm v = \overrightarrow{o\varphi(o)}$ で定まり，また等式 $\varphi_o' = t(\bm v)^{-1}\circ \varphi$ から，$\varphi_o'$ も $o$ と $\varphi$ によって定まる．ゆえに分解は一意であることも判る．より詳しくは，次の定理が成り立つ：
+		
+		<fieldset class="thm">
+			<legend>定理：正則アファイン変換の分解</legend>
+			<def>
+				<div class="paragraph">
+					アファイン空間 $(X,V)$ の任意の正則アファイン変換 $\varphi$ は，$X$ の 1 点 $o$ を選ぶごとに，正則線型変換 $\varphi'$ により定まる $o$ の周りの線型変換 $\varphi_o'$ と，$\bm v = \overrightarrow{o\varphi(o)}$ による平行移動 $t_{\bm v}$ の合成 $t_\bm v \circ \varphi_o'$ の形で一意に分解される．
+				</div>
+				<div class="paragraph">
+					そこで，各の正則アファイン変換 $\varphi$ を直積集合 $V \times \mathrm{GL}(V)$ の元 $(\bm v,\varphi')$ と同一視して表す．このとき，$\varphi = (\bm v,\varphi')$ と $\psi = (\bm w,\psi')$ に対して
+					\[
+						\psi \circ \varphi = \big(\bm w +\psi'(\bm v), \; \psi'\circ\varphi'\big).
+					\]
+				</div>
+			</def>
+		</fieldset>
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div>
+				<div class="paragraph">
+					前半の主張は先ほど導いたから，後半の等式を示す．$\varphi = (\bm v,\varphi'), \; \psi = (\bm w,\psi')$ に対して $\varphi(o) = o +\bm v$，$\psi(o) = o +\bm w$ であることに注意すれば，任意の $x \in X$ に対し
+					\[
+						\begin{aligned}
+							\psi\big(\varphi(x)\big) &= \psi\big( \varphi(o +\overrightarrow{ox}) \big)
+							= \psi\big( \varphi(o) +\varphi'(\overrightarrow{ox}) \big) \\
+							&= \psi\big( o +\bm v +\varphi'(\overrightarrow{ox}) \big)
+							= \psi(o) +\psi'\big( \bm v +\varphi'(\overrightarrow{ox} \big) \\
+							&= o +\bm w +\psi'(\bm v) +(\psi' \circ \varphi')(\overrightarrow{ox})
+						\end{aligned}
+					\]
+					より従う．█
+				</div>
+			</div>
+		</details>
+	</div>
+	<div class="paragraph">
+		こうしたことから，線型空間 $V$ の基底を選べば正則アファイン変換 $\varphi = (\bm v,\varphi')$ を定める $\bm v,\ ; \varphi'$ の成分を考えることができ，アファイン変換を行列形式で表すことが可能であることが示唆される．そのためには，アファイン空間 $(X,V)$ と数空間 $\mathbb K^n$ の間の対応関係を打ち立てなければならない．それが，<a href="./ClassicalGeometry/affine_coordinate.html" rel="noreferrer">次頁</a>で議論する「アファイン座標系」である．
+	</div>
+
+	</div>
+</body>
+</html>
