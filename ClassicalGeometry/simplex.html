@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>アファイン空間の単体</title>
+</head>
+<body>
+	<h2>アファイン空間の単体</h2>
+	
+	<h3>一般の位置</h3>
+	<div class="paragraph">
+		<a href="./dimension_theorem_of_subspace.html" target="noreferrer">前頁</a>ではアファイン部分空間の和空間やその次元についての定理を議論した．その話の続きをしよう．$n$ 次元アファイン空間 $(X,V)$ の $r +1$ 個の点 $p_0,\,\dots,\,p_r$ の和空間，つまり，これらを含む最小の部分空間を $\langle p_0,\dots,p_r\rangle$ で表す．この空間の次元が $r$ であるとき，$p_0,\,\dots,\,p_r$ は<strong class="kw">一般の位置</strong>にある，或いは<strong class="kw">アファイン独立 (affinely independent) </strong>であると謂う．例として，$r = 2$ の場合を考えてみよう．3 点 $p_0,p_1,p_2$ の和空間は $\langle p_0,p_1,p_2\rangle = (p_0 \vee p_1)\vee p_2$ と書ける．ここに部分空間の次元定理を繰り返し用いると，3 点がアファイン独立であるのは $p_2$ が直線 $p_0 \vee p_1$ 上に無く，よって 3 点が $3$ 次元の超平面を定めるとき，且つそのときに限り，このとき $\langle p_0,p_1,p_2\rangle$ に付属する線型空間は $\span\{\overrightarrow{p_0p_1}, \, \overrightarrow{p_0p_2}\}$ だ．つまり，点 $p_0$ から各点 $p_i$ を指すベクトル $\overrightarrow{p_0p_i}$ が互いに線型独立であるとき，点 $\langle p_0,\dots,p_r\rangle$ はアファイン独立であると呼ぶわけだ．このことを一般的に述べると以下のようになる：
+		<fieldset class="thm">
+			<legend>定理：アファイン独立であることの必要十分条件</legend>
+			$n$ 次元あファイン空間の $r +1$ 個の点 $p_0,\dots,p_r$ について，次の 3 条件は同値である：
+			<ol style="list-style-type: lower-roman;">
+				<li>$p_0,\dots,p_r$ はアファイン独立である．</li>
+				<li>$r$ 個のベクトル $\overrightarrow{p_0p_1},\overrightarrow{p_0p_2},\dots,\overrightarrow{p_0p_r}$ は線型独立である．</li>
+				<li>$p_i \notin \langle p_0,\dots,\hat{p_i},\dots,p_r\rangle \; (i = 1,2,\dots,n)$．ただし $\hat{p_i}$ はその元を取り除くことを意味する．</li>				
+			</ol>
+		</fieldset>
+	</div>
+
+	<h3>単体</h3>
+	<div class="paragraph">
+		いま，実アファイン空間 $(X,V)$ の $r +1$ 個の点 $p_0,\dots,p_r$ がアファイン独立であるとする．このとき上に述べたことから $r$ 個のベクトル $\overrightarrow{p_0p_1},\dots,\overrightarrow{p_0p_r}$ は互いに線型独立である．よって部分空間 $\langle p_0,\dots,p_r\rangle$ の点 $x$ に対して，実数 $\lambda_1,\dots,\lambda_r$ が唯一組定まって
+		\[
+			\overrightarrow{p_0x} = \sum_{i=1}^r \lambda_i\overrightarrow{p_0p_i}
+		\]
+		となる．そこで，
+		<fieldset class="def">
+			<legend>定義：単体・重心座標</legend>
+			<div class="paragraph">
+				実アファイン空間 $(X,V)$ において，点 $r +1$ 個の点 $p_0,\dots,p_r$ はアファイン独立であるとする．このとき $1 \leq i\leq r$ に対し $\lambda_i \geq 0$，$\sum_{i=1}^r \lambda_i \leq 1$ を満たす実数 $\lambda_1,\dots,\lambda_r$ を用いて
+				\[
+					x = p_0 +\left(\sum_{i=1}^r \lambda_i\overrightarrow{p_0p_i}\right)
+				\]
+				と表される点 $x \in \langle p_0,\dots,p_r\rangle$ 全体の集合を，$p_0,\dots,p_r$ を<strong class="kw">頂点 (vertex) </strong>とする<strong class="kw"> $r$ 次元単体 ($r$-dimensional simplex) </strong>と謂って記号 $|p_0,\dots,p_r|$ で表す．また，$V = \{p_0,\dots,p_r\}$ をその頂点集合と謂う．単体 $|p_0,\dots,p_r|$ 内の各点 $x$ に対し，上式の $\lambda_1,\dots,\lambda_r$，及び $\lambda_0 = 1 -\sum_{i=1}^r\lambda_i$ によって $r +1$ 個の実数の組 $(\lambda_0,\dots,\lambda_r)$ が唯一つ定まる．これを点 $x$ の<strong class="kw">重心座標 (barycentric coordinate) </strong>と謂う．
+			</div>
+		</fieldset>
+		空間内に 1 点 $o \in X$ を選ぶとき，単体 $|p_0,\dots,p_r|$ 内の点 $x$ はその重心座標 $(\lambda_0,\dots,\lambda_r)$ について
+		\[
+			\label{eq: 単体の点}
+			\overrightarrow{ox} = \sum_{i=0}^r \lambda_i\overrightarrow{op_i}
+			\tag{1}
+		\]
+		を満たす点である．実際，
+		\[
+			\begin{aligned}
+				\overrightarrow{ox} &= \overrightarrow{op_0} +\overrightarrow{p_0x}
+				= \overrightarrow{op_0} +\sum_{k=1}^r \lambda_k\overrightarrow{p_0p_k} \\
+				&= \overrightarrow{op_0} +\sum_{k=1}^\lambda \lambda_k(\overrightarrow{p_0o} +\overrightarrow{op_k}) \\
+				&= \left(1 -\sum_{k=1}^r\lambda_k \right)\overrightarrow{op_0} +\sum_{k=1}^r\lambda_k\overrightarrow{op_k} \\
+				&= \lambda_0\overrightarrow{op_0} +\sum_{k=1}^r\lambda_k\overrightarrow{op_k}
+			\end{aligned}
+		\]
+		である．
+	</div>
+	<div class="paragraph">
+		具体例として，$r = 0,1,2,3$ の場合を考えてみよう．$r = 0$ のとき単体 $|p_0|$ は空間内の点に等しい．$r =1$ のとき単体 $|p_0,p_1|$ は $p_0,p_1$ を端点とする<strong class="kw">線分 (line segment) </strong>と呼ばれ，空間内に任意に選ばれた定点 $o$ に対して
+		\[
+			\label{eq: 線分}
+			\overrightarrow{ox} = s\overrightarrow{op_0} +t\overrightarrow{p_1},
+			\qquad
+			(0\leq s,t\leq 1, \; s +t = 1)
+			\tag{2}
+		\]
+		で与えられる集合になる．上式は高校数学でも登場する有名なベクトル式だろう．$r = 2$ のとき単体 $|p_0,p_1,p_2|$ は 3 点 $p_0,p_1,p_2$ を頂点とする<strong class="kw">三角形 (triangle) </strong>で，
+		\[
+			\label{eq: 三角形}
+			\overrightarrow{ox} = s\overrightarrow{op_0} +t\overrightarrow{op_1} +u\overrightarrow{op_2},
+			\qquad
+			(0\leq s,t,u \leq 1, \; s +t +u = 1)
+			\tag{3}
+		\]
+		なる点 $x$ の集合だ．この流れで分かる通り，$r = 3$ のとき単体 $|p_0,p_1,p_2,p_3|$ は 4 点 $p_0,p_1,p_2,p_3$ を頂点とする<strong class="kw">四面体 (tetrahedron) </strong>である．単体の概念はこうした図形の一般化なのだ．これに対して「複体」と呼ばれる概念もあり，ざっくばらんに言えば「複数個の単体を貼り合わせた図形」のことだ<sup id="ref_1"><a href="#note_1">*1</a></sup>．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> 実際には，複体の概念は位相空間に関連した概念で，単体を連続変形したものを貼り合わせた図形である．この概念によって非常に多くの種類の図形が表現されることになる．</li>
+		</ol>	
+	</div>
+</body>
+</html>
