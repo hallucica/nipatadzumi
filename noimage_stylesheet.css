@@ -189,7 +189,7 @@
 		min-height: 480px;
 		border: solid #e6d9ba;
 
-		background-color: #fdf9ee;
+		background-color: transparent;
 	}
 	#content iframe {
 		width: 100%;
