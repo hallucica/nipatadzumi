@@ -108,6 +108,7 @@
 @media screen and (max-width: 818px) {
 	html {
 		font-size: 2.2vh;
+		height: -webkit-fill-available;
 	}
 
 	body {
@@ -143,8 +144,10 @@
 	#menu {
 		position: absolute;
 		left: 0; top: 0;
-		width: 100%; height: 1;
-
+		width: 100%;
+		min-height: -webkit-fill-available;
+		height: fit-content;
+		
 		background-color: #432f2fef;
 
 		color: #f8f4e6;
