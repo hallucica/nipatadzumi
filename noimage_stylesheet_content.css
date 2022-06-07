@@ -175,7 +175,7 @@
 		padding-right: 2vh;
 
 		/* ページ背景 */
-		background-color: antiquewhite;
+		background-color: transparent;
 
 		/* フォント */
 		font-size: 1rem;
@@ -220,6 +220,8 @@
 	}
 	details.extra div.paragraph {
 		padding-left: 1.5rem;
+		padding-top: 2pt;
+		padding-bottom: 2pt;
 		border-left: solid #666600 2pt;
 		border-bottom: solid #666600 2pt;
 	}
@@ -231,6 +233,8 @@
 	}
 	details.proof div.paragraph {
 		padding-left: 1.5rem;
+		padding-top: 2pt;
+		padding-bottom: 2pt;
 		border-left: solid #996699 2pt;
 		border-bottom: solid #996699 2pt;
 	}
@@ -304,8 +308,9 @@
 	}
 
 
+	/* :::::::::::::::: スクロールバー :::::::::::::::: */
 	::-webkit-scrollbar {
-		width: 10px;
+		width: 8px;
 		height: 10px;
 	}
 
@@ -315,6 +320,7 @@
 
 	::-webkit-scrollbar-thumb {
 		background: #ccb4b4;
-		border-radius: 5px;
+		border-radius: 4px;
+		margin: 2px 2px;
 	}
 }
