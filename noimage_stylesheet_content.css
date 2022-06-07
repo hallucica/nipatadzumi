@@ -19,18 +19,20 @@
 		font-size: 1rem;
 		font-family: 'Zen Old Mincho', serif;
 		color: #333631;
-		line-height: 1.3rem;
+		line-height: 1.5rem;
 
 		border: none;
 	}
 
 	/* ヘッディング */
 	h2 {
+		margin: 48pt 12pt;
 		font-size: 2rem;
 		font-family: 'Kaisei HarunoUmi', serif;
 	}
 
 	h3 {
+		margin-top: 4rem;
 		font-size: 1.5rem;
 		font-family: 'Noto Sans JP', sans-serif;
 		font-weight: 300;
