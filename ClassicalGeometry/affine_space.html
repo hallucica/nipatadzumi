@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>アファイン空間</title>
+</head>
+<body>
+	<h2>アファイン空間</h2>
+	
+	<h3>点の平行移動とベクトル</h3>
+	<div class="paragraph">
+		高校数学では有向線分の概念からスタートしてベクトルの概念が導入された．有向線分とは線分の両端点に始点と終点の区別を付けたものだ．これを図にするときに矢印を用いるので，多くの場合でベクトルの第一印象が「矢印」になっている．有向線分から「図形ベクトル」の概念に移る際には，「有向線分の始点・終点は異なっても，長さと向きが同じなら同じものと見做す」というような説明をされる．そのため，2 つの有向線分 $\overrightarrow{\rm AB}, \; \overrightarrow{\rm CD}$ が同じベクトルを表すことと，4 点 $\rm A,B,D,C$ がこの順に平行四辺形を成すこととが必要十分になっていた．所謂「平行四辺形の規則」というやつだ．より大学数学的な記述をするなら，この「平行四辺形の規則」は同値関係になるので，ベクトルとは「有向線分全体の集合を，平行四辺形の規則によって割った商集合の元」と説明することもできるだろう．
+	</div>
+	<div class="paragraph">
+		ところで，この辺りの議論の見方を変えると，あるベクトル $\bm v$ に対して点 $\mathrm A$ をひとつ決めると，有向線分 $\overrightarrow{\rm AB}$ がベクトル $\bm v$ を表すような点 $\mathrm B$ がひとつ，そして唯一つ定まる．そして「図形ベクトル」の足し算で矢印を継ぎ足していったように，ベクトル $\bm v$ に対して有向線分 $\overrightarrow{\rm AB}$ が，さらに別のベクトル $\bm w$ に対して有向線分 $\overrightarrow{\rm BC}$ が決まり，和 $\bm v +\bm w$ は有向線分 $\overrightarrow{\rm AC}$ で表された．このことに加え，零ベクトルは有向線分の始点と終点が一致した $\overrightarrow{\rm AA}$ で表されるから，有向線分の演算とベクトルの演算に対応が付く．そしてここで，有向線分を象徴する「矢印」に対して，「点 $\rm A$ を点 $\rm B$ に写す平行移動を表している」という意味付けをすると，<strong class="emph">ベクトルが空間内の平行移動を定めている</strong>と考えることができる．ここまで説明すれば，<a href="./group_action.html" rel="noreferrer">前頁</a>で行われた群作用の議論の意味が見えてくるだろう．
+	</div>
+
+	<h3>線型空間が作用する集合</h3>
+	<div class="paragraph">
+		$X$ を集合，$V$ を線型空間とする．線型空間 $V$ の $X$ への作用とは，$V$ を定めるアーベル群 $(V,+)$ の群作用のこととする．先に述べた議論は，この線型空間の作用によって各 $\bm v \in V$ に対して定まる $X$ 上の変換を「平行移動」と呼んでいた．また，空間内のどんな 2 点に対してもその間を結ぶ有向線分 &mdash;&mdash; あるいは平行移動，あるいはベクトル &mdash;&mdash; 状況を考えていたのだが，これは線型空間 $V$ の作用が単純推移的であることに他ならない．この考え方を土台にしたものが，あらゆる古典幾何学の空間の基礎になるアファイン空間である：
+		<fieldset class="def">
+			<legend>定義：アファイン空間</legend>
+			<div class="paragraph">
+				集合 $X$ に線型空間 $V$ が単純推移的に作用するとき，$(X,V)$ を<strong class="kw">アファイン空間 (affine space) </strong>と謂う<sup id="ref_1"><a href="#note_1">*1</a></sup>．紛れの<ruby>虞<rp>(</rp><rt>おそれ</rt><rp>)</rp></ruby>が無ければ，付属する線型空間 $V$ を省略して単に $X$ でアファイン空間を表す．線型空間 $V$ はアファイン空間 $(X,V)$ に<strong class="kw">付属する線型空間</strong>と呼ばれ，その次元 $\dim V$ を以てアファイン空間 $(X,V)$ の<strong class="kw">次元</strong>と定め，記号 $\dim X$ で表す．$V$ の各元 $\bm v$ に対して定まる $X$ 上の変換を $X$ 上の<strong class="kw">平行移動 (translation) </strong>と謂う．
+			</div>
+		</fieldset>
+		ひとつ注意しなければならないのは，アファイン空間に付属する線型空間はただの線型空間であって，そこに計量が定められていることは要請されていない．従ってベクトルのノルムや直交性といった幾何学的な構造は未だ入っていないのだ．そのためアファイン空間は「タテヨコの規矩が整った空間」ではなく，「真っ直ぐだが斜めに歪んだ空間」といったイメージの空間だ．また別の頁で説明するように，付属する線型空間に計量を導入したアファイン空間は，私たちが良く知っている「ユークリッド空間」になる．しかしここでは，計量が定められていない場合でも考えられる諸性質を扱おう．
+		<dl>
+			<dt>例 1.</dt>
+			<dd>
+				全ての線型空間 $V$ は，その演算によって自然に $V$ 自身に作用し，アファイン空間 $(V,V)$ を成す．すなわち $X$ として線型空間 $V$ を単に集合と見たものをとり，作用 $(V,V,\bar t)$ を
+				\[
+					\bar t_{\bm v}(x) = x +\bm v
+				\]
+				で定める．
+			</dd>
+
+			<dt>例 2.</dt>
+			<dd>
+				$\mathbb K$ を体とし，$X$ を $n$ 次元数空間 $\mathbb K^n$，$V$ を $n$ 次元数線型空間 $\mathbb K^n$ とする．このとき，作用 $(\mathbb K^n,\mathbb K^n,t)$ を点 $x = (x_1,\dots,x_n) \in \mathbb K^n$，ベクトル $\bm v = (v_1,\dots,v_n) \in \mathbb K^n$ に対して
+				\[
+					t_{\bm v}(x) = (x_1 +v_1, \, \dots, \, x_n +v_n)
+				\]
+				で定めれば，$(\mathbb K^n,\mathbb K^n)$ は $n$ 次元アファイン空間となる．これを $\mathbb K$ 上の $n$ 次元<strong class="kw">標準アファイン空間</strong>と呼び，単に記号 $\mathbb K^n$ でも表される．
+			</dd>
+		</dl>
+	</div>
+
+	<h3>平行移動</h3>
+	<div class="paragraph">
+		アファイン空間 $(X,V)$ における作用，平行移動について少し調べよう．先ず，冒頭の議論の繰り返しになるが，作用が単純推移的であることから，アファイン空間の任意の 2 点 $x,y$ に対して $y = t_{\bm v}(x)$ なるベクトル $\bm v$ が唯一つ定まる．これを $\overrightarrow{xy}$ で表すとき，アファイン空間の任意の 3 点 $x,y,z$ に対して
+		\[
+			\label{eq: 平行移動の合成}
+			\overrightarrow{xy} +\overrightarrow{yz} = \overrightarrow{xz}
+			\tag{1}
+		\]
+		が成り立つ．実際，$\bm a = \overrightarrow{xy}, \; \bm b = \overrightarrow{yz}$ とおくとき $t_{\bm a +\bm b}(x) = t_{\bm b}(t_{\bm a}(x)) = t_{\bm b}(y) = z$ であり，一意性から $\overrightarrow{xz} = \bm a +\bm b$ となって上式を得る．「$x$ を $y$ に写す平行移動」と「$y$ を $z$ に写す平行移動」の合成が「$x$ を $z$ に写す平行移動」であるという，ごく自然な結果だ<sup id="#note_2"><a href="re_2">*2</a></sup>．
+	</div>
+	<div class="paragraph">
+		アファイン空間 $(X,V)$ において定点 $a \in X$ を選ぶとき，写像 $f_a : X \to V$ と $\varTheta_a : V \to X$ がそれぞれ
+		\[
+			f_a(x) = \overrightarrow{ax},
+			\qquad
+			\varTheta_a(\bm v) = t_{\bm v}(a)
+		\]
+		で定まって，これらは互いに逆写像になっている．このとき
+		\[
+			\varTheta_a(\bm u +\bm v) = t_{\bm u +\bm v}(a) = t_{\bm v}\big(\varTheta_a(\bm u)\big)
+		\]
+		であるが，最左辺はアファイン空間 $(V,V,\bar t)$ の作用 $\bar t$ を用いて $\varTheta_a\big(t_{\bm v}(\bm u)\big)$ と書けるから，
+		\[
+			(\varTheta_a \circ \bar t_{\bm v})(\bm u) = (t_{\bm v}\circ\varTheta(\bm u)).
+		\]
+		よってこの $\varTheta_a$ は $(X,V,t)$ と $(V,V,\bar t)$ の間の同変写像になっており，<a href="./group_action.html#equivalence_of_actions">二つの作用は同値</a>である．これは<strong class="emph">どんなアファイン空間 $(X,V)$ も上の同変写像 $\varTheta_a$ によってアファイン空間 $(V,V)$ と同一視できる</strong>ことを意味しており，それゆえ，短い間だったが今まで $t_{\bm v}(x)$ と書いていた $\bm v\in V$ が定める平行移動を単に $x +\bm v$ と書く．日常的な喩えで読むならば「2 時＋4 時間＝6 時」という表現と同じものだ．また，高校数学で点の座標とベクトルとを<ruby>屡<rp>(</rp><rt>しばしば</rt><rp>)</rp></ruby>意図的に混同して表していたが，今示されたことは実際に点とベクトル (つまり付属する線型空間の元) とは上の写像 $\varTheta_a,\,f_a$ を介して同一視できることを意味している．尚，点の座標に関してはまた別の頁で議論しよう．
+	</div>
+
+	<h3>アファイン部分空間</h3>
+	<div class="paragraph">
+		$n$ 次元アファイン空間 $(X,V)$ に対し，$X$ の部分集合 $Y$ に対して $V$ のある線型部分空間 $W$ が存在して，$(X,V)$ の作用の下で $Y$ が $V$ の<a href="./group_action.html#orbit_stabilizer">軌道</a>となるとき，$(Y,W)$ を $(X,V)$ の<strong class="kw">アファイン部分空間 (affine subspace) </strong>或いは単に<strong class="kw">部分空間 (subspace) </strong>と謂う．部分空間 $(Y,W)$ では $W$ が $V$ の部分群として $Y \subseteq X$ に単純推移的に作用している．部分空間 $(Y,W)$ の次元は $W$ の次元を以て定義され，次元が $n -1$ の部分空間を<strong class="kw">超平面 (hyperplane) </strong>，次元が $1$ の部分空間を<strong class="kw">直線 (line) </strong>，次元が $0$ の部分空間を<strong class="kw">点 (point) </strong>と謂う．次元がゼロの線型空間とは自明な線型空間 $\{\bm 0\}$ のことで，これの軌道となるのは 1 元集合 $\{x\} \; (x \in X)$ である．このため，アファイン空間 $X$ の元 $x \in X$ のことも点と呼ぶことが多い．
+	</div>
+	<div class="paragraph">
+		最後に具体的な例として，$3$ 次元実線型空間 $\mathbb R^3$ によって作られる $3$ 次元実アファイン空間 $(X,\mathbb R^3)$ の部分空間を考えてみよう．全体空間を除く部分空間の次元は $0,1,2$ の 3 通りあり，それぞれ空間内の点，直線，平面である．直線は空間内の 1 点 $\mathrm A$ を含む，$\mathbb R^3$ の 1 次元部分空間による軌道であるから，それはある $\bm a \in \mathbb R$ に対して
+		\[
+			\label{eq: 直線のベクトル方程式}
+			l = \bigl\{ \mathrm P \in X \bigm| \mathrm P = \mathrm A +k\bm a; \; k \in \mathbb R \bigr\}
+		\]
+		と書ける．右辺にある “$\mathrm P = \mathrm A +k\bm a$” は高校数学でも学んだ，所謂直線のベクトル方程式というもので，ベクトル $\bm a$ は直線 $l$ の<strong class="kw">方向ベクトル</strong>と呼ばれた．高校数学では幾何学的な考察からこの方程式を導出したが，いまの私たちの立場では，むしろ<strong class="emph">この式を以てして「直線」という図形を定義する</strong>のだ．同様に，平面は空間内の 1 点 $\mathrm A$ を含む，$\mathbb R^3$ の 2 次元部分空間による軌道であるから，それはある $\bm a,\bm b\in \mathbb R^3$ に対して
+		\[
+			\label{eq: 平面のベクトル方程式}
+			l = \bigl\{ \mathrm P \in X \bigm| \mathrm P = \mathrm A +(k\bm a +l\bm b); \; k,l \in \mathbb R \bigr\}
+		\]
+		と書ける．この中の式 $\mathrm P = \mathrm A +(k\bm a +l\bm b)$ も高校数学でお馴染みの，平面のベクトル方程式だ．
+	</div>
+
+	<div class="paragraph">
+		<a href="./dimension_theorem_of_subspace.html" rel="noreferrer">次頁</a>ではアファイン部分空間の次元について議論しよう．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> “○○空間” という名前の多くは，「ユークリッド空間」「ヒルベルト空間」のように人名を冠したものだが，アファイン空間の “アファイン” は英語の形容詞 “affine” のカナ表記だ．辞書を引くと「婚姻関係で結ばれた/密接に関連した」といった記載が見つかる．</li>
+			<li id="note_1"><a href="#ref_1">↑</a> ところで，「平行移動」という用語を出しつつも「平行」という概念は未だ定義していない．図形ベクトルの計算で \eqref{eq: 平行移動の合成} 式を確かめたときには，ユークリッド幾何学の「平行」の概念をもろに使っていた．しかしここでは「平行」の定義を抜きにして，作用の単純推移性のみからこの帰結を得ていることに注目すべきだろう．</li>
+		</ol>	
+	</div>
+</body>
+</html>
