@@ -46,7 +46,7 @@
 	/* :::::::::::::::: 本文の段落 :::::::::::::::: */
 	div.paragraph {
 		text-indent: 1rem;
-		line-height: 1.75;
+		line-height: 2rem;
 	}
 
 
@@ -217,7 +217,7 @@
 	/* :::::::::::::::: 本文の段落 :::::::::::::::: */
 	div.paragraph {
 		text-indent: 1rem;
-		line-height: 1.75;
+		line-height: 2rem;
 	}
 
 
