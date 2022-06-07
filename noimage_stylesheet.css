@@ -180,7 +180,10 @@
 	}
 
 	#menu a {
-		color: #00a381;
+		color: #38a1db;
+	}
+	#menu a:visited {
+		color: #bc64a4;
 	}
 
 	#content {
