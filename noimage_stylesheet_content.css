@@ -19,6 +19,7 @@
 		font-size: 1rem;
 		font-family: 'Zen Old Mincho', serif;
 		color: #333631;
+		line-height: 1.3rem;
 
 		border: none;
 	}
@@ -51,25 +52,29 @@
 
 	/* :::::::::::::::: 折りたたみテキスト :::::::::::::::: */
 	details.extra summary {
+		width: fit-content;
 		height: fit-content;
-		border: solid #666600 2pt;
-		border-radius: 12pt;
+		padding-left: 12pt;
 	}
-	details.extra div.paragraph {
-		padding-left: 1.5rem;
-		border-left: solid #666600 2pt;
-		border-bottom: solid #666600 2pt;
+	details.extra > div {
+		margin: 4pt 36pt;
+		padding: 4pt 1.5rem;
+
+		background-color: #cc9966;
+		box-shadow: 5px 5px 6px -1px #442706;
 	}
 
 	details.proof summary {
+		width: fit-content;
 		height: fit-content;
-		border: solid #996699 2pt;
-		border-radius: 12pt;
+		padding: 4pt 12pt;
 	}
-	details.proof div.paragraph {
-		padding-left: 1.5rem;
-		border-left: solid #996699 2pt;
-		border-bottom: solid #996699 2pt;
+	details.proof > div {
+		margin: 4pt 36pt;
+		padding: 4pt 1.5rem;
+
+		background-color: #bbbbbb;
+		box-shadow: 5px 5px 6px -1px #442706;
 	}
 
 
@@ -214,29 +219,29 @@
 
 	/* :::::::::::::::: 折りたたみテキスト :::::::::::::::: */
 	details.extra summary {
+		width: fit-content;
 		height: fit-content;
-		border: solid #666600 2pt;
-		border-radius: 12pt;
+		padding-left: 12pt;
 	}
-	details.extra div.paragraph {
-		padding-left: 1.5rem;
-		padding-top: 2pt;
-		padding-bottom: 2pt;
-		border-left: solid #666600 2pt;
-		border-bottom: solid #666600 2pt;
+	details.extra > div {
+		margin: 4pt 36pt;
+		padding: 4pt 1.5rem;
+
+		background-color: #cc9966;
+		box-shadow: 5px 5px 6px -1px #442706;
 	}
 
 	details.proof summary {
+		width: fit-content;
 		height: fit-content;
-		border: solid #996699 2pt;
-		border-radius: 12pt;
+		padding: 4pt 12pt;
 	}
-	details.proof div.paragraph {
-		padding-left: 1.5rem;
-		padding-top: 2pt;
-		padding-bottom: 2pt;
-		border-left: solid #996699 2pt;
-		border-bottom: solid #996699 2pt;
+	details.proof > div {
+		margin: 4pt 36pt;
+		padding: 4pt 1.5rem;
+
+		background-color: #bbbbbb;
+		box-shadow: 5px 5px 6px -1px #442706;
 	}
 
 
