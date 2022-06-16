@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>線型部分空間</title>
+</head>
+<body>
+	<h2>線型部分空間</h2>
+	<div class="paragraph">
+		体 $\mathbb K$ 上の線型空間 $V$ のある部分集合 $W$ であって，それが再び $V$ 上の加法とスカラー乗法について $\mathbb K$-線型空間となるとき，$W$ を $V$ の<strong class="kw">線型部分空間 (linear subspace) </strong>，<strong class="kw">ベクトル部分空間 (vector subspace) </strong>，あるいは紛れの虞が無ければ単に<strong class="kw">部分空間 (subspace) </strong>と謂う<sup id="ref_1"><a href="#note_1">*1</a></sup>．定義より，1 元集合 $\{\bm 0\}$ と $V$ 自身は明らかに部分空間であり，これらは自明な部分空間と呼ばれる．
+	</div>
+	<div class="paragraph">
+		部分空間は，線型空間 $V$ を構成する「部品」のようなものだと考えれば良いと思う．<strong class="emph">$V$ 全体をより「小さな」部分空間たちに分割した後，それらを「くっつけて」$V$ 全体を表そう</strong>，というのが本頁と，続く『<a href="./linearly_independance.html" rel="noreferrer">線型独立性</a>』『<a href="./basis_and_dimension.html" rel="noreferrer">基底と次元</a>』の目標だ．
+	</div>
 
+	<h3>部分空間であることの必要十分条件</h3>
+	<div class="paragraph">
+		線型空間 $V$ の部分集合 $W$ が部分空間であることの必要十分条件を考えよう．定義に則れば，$W$ が $V$ の加法とスカラー乗法に関して線型空間となること &mdash;&mdash; つまり<a href="./linear_space.html#axioms_of_linear_space" rel="noreferrer">線型空間の公理</a>を充たすことを検証すれば良い．しかし少し考えれば，線型空間の公理のほとんどは自動的に充たされることが直ぐに判る．加法の結合律・交換律やスカラー乗法に関する諸条件は，$W$ でも同様に成り立つ．非自明なのは零ベクトルが存在すること，そして<strong class="emph"> $W$ が加法とスカラー乗法に関して閉じていること</strong>の 2 点だ．もともと $V$ の加法は写像 $V \times V \to V$ のことだと定義していたが，それは「任意の $\bm a,\bm b \in V$ に対して $\bm a +\bm b \in V$ である」という条件を暗に含んでいた．これと同じことが $W$ についても成り立たなければならない：すなわち任意の $\bm a,\bm b \in W$ に対して $\bm a +\bm b$ もまた $W$ の元でなければならない．スカラー乗法に関しても同様だ．これらを整理すると次を得る：
+		<fieldset class="thm">
+			<legend>定理：線型部分空間であることの必要十分条件</legend>
+			<div class="paragraph">
+				$\mathbb K$-線型空間 $V$ の部分集合 $W$ が線型部分空間となることは，次の 2 条件が同時に成り立つことと必要十分である：
+				<ol>
+					<li>任意の $\bm a,\bm b \in W$ に対して $a +b\in W$．</li>
+					<li>任意の $\bm a \in W$ と $\lambda \in \mathbb K$ に対して，$\bm a\lambda \in W$．</li>
+				</ol>
+			</div>
+		</fieldset>
+		スカラー乗法について $\bm a0 = \bm 0$，$\bm a(-1) = -\bm a$ であったことから，上の条件 2. で零ベクトルの存在および逆元の存在も保証され，<ruby>斯<rp>(</rp><rt>か</rt><rp>)</rp></ruby>くして $W$ もまた線型空間となることが保証されるというわけだ．
+	</div>
+	<div class="paragraph">
+		上の定理の簡単な応用として，2 つの部分空間 $W_1,W_2$ の交わり $W_1 \cap W_2$ もまた部分空間となることが示せる．実際 $\bm a,\bm b \in W_1 \cap W_2$ なら，$\bm a,\bm b$ はいずれも $W_1, W_2$ の元である．そして $W_1,W_2$ は部分空間であるから，$\bm a +\bm b$ また $\bm a\lambda \; (\lambda \in \mathbb K)$ は $W_1,W_2$ の元であり，よってまた $W_1\cap W_2$ の元である．よって定理の 2 条件が充たされ，$W_1\cap W_2$ は部分空間である．█
+	</div>
+
+	<h3>生成された部分空間</h3>
+	<div class="paragraph">
+		$I$ を<a href="../Basics/index_set.html" rel="noreferrer">添字集合</a>とし，線型空間 $V$ のベクトルの族 $G = \{\bm g_i\}_{i\in I}$ をとる．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> 線型空間論のあいだは「部分空間」と謂えばいつも線型部分空間のことを指すと思って差し支えないけれども，幾何学では「アファイン空間」や「射影空間」といった様々な「空間」を議論し，そのそれぞれに「部分空間」の概念が定義されるため，それぞれどの意味での「部分空間」なのか注意する必要がある．</li>
+		</ol>	
+	</div>
+</body>
+</html>
