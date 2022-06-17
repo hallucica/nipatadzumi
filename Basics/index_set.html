@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>族と添字集合</title>
+</head>
+<body>
+	<h2>族と添字集合</h2>
+	
+	<div class="paragraph">
+		集合 $\Lambda$ から集合 $S$ への写像 $A$ に対し，各 $\lambda \in \Lambda$ の像を $A_\lambda$ と書き，$\Lambda$ の像を $\{A_\lambda\}_{\lambda \in \Lambda}$ と書くとき，これを<strong class="kw">添字集合 (index set) </strong>$\Lambda$ で添字付けられた，集合 $S$ の元の<strong class="kw">族 (family) </strong>と謂う<sup id="ref_1"><a href="#note_1">*1</a></sup>．添字集合 $\Lambda$ が明らかな場合は省略して単に $\{A_\lambda\}$ のように表す．
+		
+		<dl>
+			<dt>例 1. 部分集合族</dt>
+			<dd>集合 $S$ の<strong class="kw">部分集合族 (subset family) </strong>は，添字集合 $\Lambda$ で添字付けられた $\mathfrak P(S)$ の元の族．</dd>
+
+			<dt>例 2. 数ベクトルの成分</dt>
+			<dd>体 $\mathbb K$ 上の $n$ 次元数ベクトル $\bm a \in \mathbb K^n$ の成分は，自然数の部分集合 $\{1,2,\dots,n\}$ を添字集合とする族で，これは特に $(a_i) \; (i \in \{1,2,\dots,n\}$ のように表されることが多い．また，3 次元のユークリッド空間を意識する場合は，3 つの文字 $x,y,z$ からなる集合 $\{x,y,z\}$ を添字集合とすることも多い．</dd>
+
+			<dt>例 3. 直積集合を添字集合とする族</dt>
+			<dd>2 つの集合 $\Lambda, \mathrm M$ の直積 $\Lambda\times\mathrm M$ を添字集合とする族 $\{A_{(\lambda,\mu)}\}_{(\lambda,\mu) \in \Lambda \times \mathrm M}$ は，「$\Lambda,\mathrm M$ で二重に添え字付けられた族」と呼ばれる．このとき<ruby>屡<rp>(</rp><rt>しばしば</rt><rp>)</rp></ruby>順序対 $(\lambda,\mu)$ を単に $\lambda\mu$ と書いて，$\{A_{\lambda\mu}\}_{\lambda\in\Lambda, \; \mu \in \mathrm M}$ と書くことも多い．行列の成分などが典型的だろう．</dd>
+		</dl>
+	</div>
+	<div class="paragraph">
+		$\Lambda$ を添字集合とする族 $\{A_\lambda\}_{\lambda \in \Lambda}$ に対する総和，総積，集合の交わり，結びといった演算子は，それぞれ次のように表される：
+		\[
+			\sum_{\lambda \in \Lambda} A_\lambda,
+			\qquad
+			\prod_{\lambda \in \Lambda} A_\lambda,
+			\qquad
+			\bigcap_{\lambda \in \Lambda} A_\lambda,
+			\qquad
+			\bigcup_{\lambda \in \Lambda} A_\lambda.
+		\]
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> 「$\Lambda$ の元によって添字付けられている」は英語で “indexed by means of the element of $\Lambda$” と表現される．</li>
+		</ol>	
+	</div>
+</body>
+</html>
