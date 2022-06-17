@@ -40,13 +40,95 @@
 
 	<h3>生成された部分空間</h3>
 	<div class="paragraph">
-		$I$ を<a href="../Basics/index_set.html" rel="noreferrer">添字集合</a>とし，線型空間 $V$ のベクトルの族 $G = \{\bm g_i\}_{i\in I}$ をとる．
+		$V$ を体 $\mathbb K$ 上の線型空間，$G$ をその部分集合とし，適当な添字集合 $I$ を選んで $G$ を $I$ で添字付けられたベクトル族 $G = \{\bm g_i\}_{i\in I}$ と見做す．ある<strong class="emph">有限</strong>部分集合 $I' \subseteq I$ に関して定められる有限和
+		\[
+			\label{eq: 線型結合}
+			\sum_{i \in I'} \bm g_i \lambda_i,
+			\qquad
+			\mbox{where $\bm g_i \in G, \; \lambda_i \in \mathbb K$}
+			\tag{1}
+		\]
+		を，部分集合 $G$ の<strong class="kw">線型結合 (linear combination) </strong>と謂う．例えば $I' = \{1,2,\dots,n\}$ なら有限和
+		\[
+			\bm g_1\lambda_1 +\dotsm +\bm g_n\lambda_n
+		\]
+		が線型結合だ．線型結合に関して次の定理が成り立つ：
+		<fieldset class="def">
+			<legend>定理 & 定義：生成された部分空間</legend>
+			<div class="paragraph">
+				$V$ を体 $\mathbb K$ 上の線型空間，$G$ をその部分集合とし，適当な添字集合 $I$ を選んで $G$ を $I$ で添字付けられたベクトル族 $G = \{\bm g_i\}_{i\in I}$ と見做す．$G$ の全ての線型結合より成る集合
+				\[
+					\label{eq: 生成された部分空間}
+					\span G = \langle G\rangle = \left\{ \sum_{i\in I' \subseteq I}\bm g_i\lambda_i \vermid| |I'| < \infty, \; \bm g_i \in G, \; \lambda_i \in \mathbb K \right\}
+					\tag{2}
+				\]
+				は $V$ の部分空間となる．これを部分集合 $G$ から<strong class="kw">生成された部分空間 (generated subspace) </strong>と謂い，族 $G$ をその<strong class="kw">生成系 (generating set) </strong>と謂う．
+			</div>
+		</fieldset>
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div class="paragraph">
+				2 元 $\bm a,\bm b \in \span G$ をそれぞれ
+				\[
+					\bm a = \sum_{i_1 \in I_1}\bm g_{i_1}a_{i_1},
+					\qquad
+					\bm b = \sum_{i_2 \in I_2}\bm g_{i_2}b_{i_2}
+				\]
+				($I_1,I_2$ はそれぞれ添字集合 $I$ の有限部分集合) とおく．このとき $I' = I_1 \cup I_2$ とおくとこれも添字集合 $I$ の有限部分集合である．$i \in I'$ に対して
+				\[
+					c_i = \left\{
+					\begin{alignedat}{2}
+						& a_i		&\quad	& \mbox{for $i \in I'\setminus I_2$} \\
+						& b_i		&\quad	& \mbox{for $i \in I'\setminus I_1$} \\
+						& a_i +b_i	&\quad	& \mbox{for $i \in I_1\cap I_2$}
+					\end{alignedat}
+					\right.
+				\]
+				とおくと，
+				\[
+					\bm a +\bm b = \sum_{i \in I'}\bm g_ic_i,
+				\]
+				すなわち $\bm a +\bm b$ もまたベクトル族 $G$ の線型結合であり，$\bm a +\bm b \in \span G$ である．また，任意の $\lambda \in \mathbb K$ に対して $\bm a\lambda$ も明らかにベクトル族 $G$ の線型結合であり，$\bm a\lambda \in G$ である．よって $\span G$ は $V$ の線型部分空間である．█
+			</div>
+		</details>
+	</div>
+	<div class="paragraph">
+		生成された部分空間は続く頁の議論で中心的な位置づけにある，というのも，線型空間 $V$ をその部分空間に分割して構造を調べるという問題は，最終的に $V$ そのものを生成する生成系の中で「特殊な条件」を充たすものを求めることに帰着するからだ．その「特殊な条件」については次の頁で議論するとして，生成された部分空間の性質を見てみよう：
+		<fieldset class="prop">
+			<legend>命題：線型苞</legend>
+			<div class="paragraph">
+				$V$ を体 $\mathbb K$ 上の線型空間，$G$ をその部分集合とする．$G$ が生成する部分空間 $\span G$ は $G$ を含む最小の部分空間であり，$V$ の部分空間 $W$ であって $G$ を含むもの全ての交わりである：
+				\[
+					\label{eq: 線型苞}
+					\span G = \bigcap_{G \subseteq W \in \mathscr S(V)} W,
+					\qquad
+					\mbox{$\mathscr S(V)$ は $V$ の部分空間全体の集合}.
+					\tag{3}
+				\]
+			</div>
+		</fieldset>
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div class="paragraph">
+				\eqref{eq: 線型苞} 式の右辺を $A$ とおき，また適当な添字集合 $I$ をとって部分集合 $G$ を $I$ で添字付けられたベクトル族と見做す：$G = \{\bm g_i\}_{i\in I}$．定義より $A$ は $G$ を部分集合として含む部分空間であり，各 $i \in I$ に対して $\bm g_i \in A$ であるから，
+				\[
+					\bm g_i +\bm g_j \in A
+					\quad\wedge\quad
+					\bm g_i\lambda \in A
+					\qquad
+					(i,j \in I, \; \lambda \in \mathbb K).
+				\]
+				ゆえに，$G$ の任意の線型結合は<ruby>亦<rp>(</rp><rt>また</rt><rp>)</rp></ruby> $A$ に含まれ，したがって $\span G \subseteq A$ である．一方，$\span G$ は明らかに $G$ を部分集合として含むから，$A$ の定義より $\span G \supseteq A$ である．よって $A = \span G$ である．また同様にして，$V$ の部分空間 $W$ が $G$ を部分集合として含むとき，$A = \span G$ も部分集合として含む：$G \subseteq W \;\Longrightarrow\; \span G \subseteq W$．これは $\span G$ が $G$ を部分集合として含む部分空間全体において (集合の包含関係に関して) 最小であることに他ならない．█
+			</div>
+		</details>
+		この命題は生成された部分空間 $\span G$ に別の観点からの定義を与えている．$G$ を部分集合として含むあらゆる部分空間によって「包まれる」部分空間，と謂う意味で，$G$ が生成する部分空間 $\span G$ は $G$ の<strong class="kw">線型苞 (linear hull) </strong>とも呼ばれる<sup id="ref_2"><a href="#note_2">*2</a></sup>．特に，ひとつのベクトル $\bm a$ が生成する部分空間 $\span\{\bm a\}$ は $\bm a$ を含む最小の部分空間で，その元は $\bm a$ の任意のスカラー倍になる．そのため $\span\{\bm a\}$ は特に $\bm a\mathbb K$ と表される．
 	</div>
 
 	<div>
 		<h4>脚注</h4>
 		<ol id="footnote">
 			<li id="note_1"><a href="#ref_1">↑</a> 線型空間論のあいだは「部分空間」と謂えばいつも線型部分空間のことを指すと思って差し支えないけれども，幾何学では「アファイン空間」や「射影空間」といった様々な「空間」を議論し，そのそれぞれに「部分空間」の概念が定義されるため，それぞれどの意味での「部分空間」なのか注意する必要がある．</li>
+			<li id="note_1"><a href="#ref_1">↑</a> “hull” は植物の種子の<ruby>莢<rp>(</rp><rt>さや</rt><rp>)</rp></ruby>を意味する．</li>
 		</ol>	
 	</div>
 </body>
