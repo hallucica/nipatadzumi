@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>線型独立性</title>
+</head>
+<body>
+	<h2>線型独立性</h2>
+	
+	<h3>和空間</h3>
+	<div class="paragraph">
+		線型空間 $V$ の 2 つの部分空間 $W_1,W_2$ に対し，その交わり (積集合) $W_1 \cap W_2$ もまた $V$ の部分空間となる．一方容易に判るように，$W_1,W_2$ の結び (和集合) $W_1 \cup W_2$ は一般には部分空間とはならず，代わりに
+		\[
+			\label{eq: 和空間}
+			W_1 +W_2 = \bigl\{ \bm x_1 +\bm x_2 \bigm| \bm x_1 \in W_1, \; \bm x_2 \in W_2 \bigr\}
+			\tag{1}
+		\]
+		としたものが部分空間となる (証明略)．これを 2 つの部分空間 $W_1,W_2$ の<strong class="kw">和空間</strong>，或いは単に<strong class="kw">和</strong>と謂う．定義より明らかにこれは $\span(W_1 \cup W_2)$ に等しい &mdash;&mdash; つまりこれは和集合 $W_1 \cup W_2$ を含む最小の部分空間だ．したがって，$V$ のある有限部分集合 $S = \{\bm a_1,\dots,\bm a_n\} = \bigcup_{i=1}^n \{\bm a_i\}$ が生成する部分空間 $\span S$ というのは，各 $\bm a_i \; (i = 1,2,\dots,n)$ が生成する部分空間 $\bm a_i\mathbb K$ の和空間，という訳だ．また，$V$ の部分空間族 $\{W_i\}_{i\in I}$ の和 $W$ を
+		\[
+			W = \left\{ \sum_{i\in I' \subseteq I}\bm x_i \vermid| |I'| < \infty, \; \bm x_i \in W_i \right\},
+		\]
+		つまり部分空間族 $\{W_i\}_{i\in I}$ の中の有限個の部分空間からひとつずつ元を選んで足し合わせたもの全体の集合とすれば，同様の理由でこれは和集合 $\bigcup_{i\in I}W_i$ を含む最小の部分空間となる．特に，<strong class="emph">上式の左辺が $V$ となるような部分集合族 $\{W_i\}_{i\in I}$ を発見できれば，$V$ の任意の元は各 $W_i$ からひとつずつ元を選んで足し合わせたものとして具体的に表せる</strong>ようになる．
+	</div>
+
+	<h3>線型独立性</h3>
+	<div class="paragraph">
+		しかし，事はそう単純ではない．確かに和空間 $W_1 +W_2$ の元 $\bm x$ は，どれもある $\bm x_1 \in W_1$ と $\bm x_2 \in W_2$ に対して $\bm x = \bm x_1 +\bm x_2$ という和の形の分解を持つが，<strong class="emph">それは一般には一意でない</strong>．実際，ある $\bm x_1,\bm x_2$ に対して $\bm x = \bm x_1 +\bm x_2$ ならば，ある $\bm 0 \neq \bm d \in W_1 \cap W_2$ を選べば任意のスカラー $\lambda$ に対して $(\bm x_1 -\bm d\lambda) +(\bm x_2 +\bm d\lambda)$ も $\bm x$ の分解となり，$\bm x$ には無数の分解が存在することになる．これでは使い勝手が悪い．
+	</div>
+	<div class="paragraph">
+		では，和空間 $W_1 +W_2$ の各元 $\bm x$ に対して $\bm x_1 \in W_1$，$\bm x_2 \in W_2$ が一意に定まって $\bm x = \bm x_1 +\bm x_2$ となるための必要十分条件を考えよう．「分解が一意である」とはつまり，任意の $\bm x_1,\bm x_1' \in W_1$ と任意の $\bm x_2,\bm x_2' \in W_2$ に対し，
+		\[
+			\bm x_1 +\bm x_2 = \bm x_1' +\bm x_2'
+			\quad\Longrightarrow\quad
+			\bm x_1 = \bm x_1' \; \wedge \; \bm x_2 = \bm x_2'
+		\]
+		が成り立つことである．あるいは $\bm x_1 -\bm x_1' = \bm X_1 \in W_1$，$\bm x_2 -\bm x_2' = \bm X_2 \in W_2$ とおけば，上式は任意の $\bm X_1,\bm X_2$ に対し
+		\[
+			\label{eq: 線型独立性-1}
+			\bm X_1 +\bm X_2 = \bm 0
+			\quad\Longrightarrow\quad
+			\bm X_1 = \bm X_2 = \bm 0
+			\tag{2}
+		\]
+		が成り立つことと同値である．これが
+		\[
+			\label{eq: 線型独立性-2}
+			W_1 \cap W_2 = \{\bm 0\}
+			\tag{3}
+		\]
+		の必要条件であることは容易に判る．実際 \eqref{eq: 線型独立性-1} 式の前件は $\bm X_1 = -\bm X_2 \in W_2$ かつ $\bm X_2 = -\bm X_1 \in W_1$ より $\bm X_1,\bm X_2 \in W_1 \cap W_2$ を含意するので，$W_1 \cap W_2 = \{\bm 0\}$ なら $\bm X_1 = \bm X_2 = \bm 0$ が従う．が，\eqref{eq: 線型独立性-1} 式が \eqref{eq: 線型独立性-2} 式の十分条件であることも容易に判る：もし \eqref{eq: 線型独立性-1} 式が成立する下で $W_1 \cap W_2$ がゼロでない元 $\bm d$ を持つならば，$\bm X_1 \to \bm X_1' =  \bm X_1 -\bm a$，$\bm X_2 \to \bm X_2' = \bm X_2 +\bm a$ と置き換えても $\bm X_1' +\bm X_2' = \bm 0$ であるが，$\bm X_1 \neq \bm 0$，$\bm X_2\neq\bm 0$ となってしまう．よって $W_1 \cap W_2 = \{\bm 0\}$ である．
+	</div>
+	<div class="paragraph">
+		2 つの部分空間 $W_1, W_2$ が\eqref{eq: 線型独立性-2} 式を充たす (よってまた \eqref{eq: 線型独立性-1} 式をも充たす) とき，これらは互いに<strong class="kw">線型独立</strong>であると謂い，線型独立な部分空間の和空間は特に<strong class="kw">直和</strong>と呼ばれ記号 $W_1 \oplus W_2$ や $W_1 \dotplus W_2$ で表される．$W_1,W_2$ が線型独立でない場合は線型従属であると謂う．特に，$W_1,W_2$ がそれぞれベクトル $\bm a_1,\bm a_2$ から生成される部分空間であるときは，\eqref{eq: 線型独立性-1} 式は
+		\[
+			\forall \lambda_1,\lambda_2 \in \mathbb K \big(\bm a_1\lambda_1 +\bm a_2\lambda_2 = \bm 0
+			\quad\Longrightarrow\quad
+			\lambda_1 = \lambda_2 = 0\big)
+		\]
+		と書ける．この場合は特に，2 つのベクトル $\bm a_1,\bm a_2$ が互いに線型独立であると謂う．以上の定義を一般化して次を得る：
+		<fieldset class="def">
+			<legend>定義：線型独立性と直和</legend>
+			<div class="paragraph">
+				体 $\mathbb K$ 上の線型空間 $V$ の部分空間の族 $\{W_i\}_{i\in I}$ が互いに<strong class="kw">線型独立 (linearly independent) </strong>であるとは，$\bigcap_{i\in I}W_i = \{\bm 0\}$ となることを謂う．このとき $\{W_i\}_{i\in I}$ の和空間を<strong class="kw">直和 (direct sum) </strong>と謂い，記号
+				\[
+					\label{eq: 直和}
+					\bigoplus_{i\in I}W_i
+				\]
+				で表す．特に，ベクトル族 $\{\bm a_j\}_{j\in J}$ の各元が生成する部分空間の族 $\{\bm a_j\mathbb K\}_{j\in J}$ が線型独立であるとき，ベクトル族 $\{\bm a_j\}_{j\in J}$ は互いに線型独立であると謂う．その必要十分条件は，添字集合 $I$ の任意の有限部分集合 $I'$ に対して
+				\[
+					\label{eq: 線型独立性}
+					\sum_{i\in I'}\bm a_i\lambda_i = \bm 0
+					\quad\Longrightarrow\quad
+					\forall i\in I'(\lambda_i = 0)
+					\tag{4}
+				\]
+				が成り立つことと同値である．
+			</div>
+		</fieldset>
+		<a href="./linear_subspace.html" rel="noreferrer">前頁</a>からの目的であった問題は，「線型空間 $V$ から線型独立な部分空間を選び出し，それらの直和として $V$ を表す」という問題に明確化された．これが<ruby>所謂<rp>(</rp><rt>いわゆる</rt><rp>)</rp></ruby>線型空間の<strong class="kw">直和分解</strong>だ．この直和分解を究極まで推し進めれば，最小の非自明な部分空間 &mdash;&mdash; つまりひとつのベクトルが生成する部分空間の直和に分解されるだろう．<a href="./basis_and_dimension.html" rel="noreferrer">次頁</a>でそれについて詳しく議論しよう．
+	</div>
+</body>
+</html>

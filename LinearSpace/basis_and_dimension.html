@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>基底と次元</title>
+</head>
+<body>
+	<h2>基底と次元</h2>
+	
+	<h3>線型空間の基底</h3>
+	<div class="paragraph">
+		体 $\mathbb K$ 上の線型空間 $V$ のある部分集合 $B$ が $V$ を生成し，しかも $B$ のベクトルは互いに線型独立であるとき，$B$ は線型空間 $V$ の<strong class="kw">基底 (basis) </strong>であると謂う．適当な添字集合 $I$ を選んで $B$ をベクトル族 $\{\bm b_i\}_{i\in I}$ と<ruby>見做<rp>(</rp><rt>みな</rt><rp>)</rp></ruby>そう．<a href="./linear_independance.html" rel="noreferrer">前頁</a>までの議論から，$B$ が $V$ の基底であるとき
+		\[
+			\label{eq: 線型空間の直和分解}
+			V = \bigoplus_{i\in I}\bm b_i\mathbb K
+			\qquad (\bm b_i \in B)
+			\tag{1}
+		\]
+		であり，任意の $V$ の元 $\bm v$ に対して添字集合 $I$ のある有限部分集合 $I'$ が定まり，$\bm v$ は $I'$ に関する基底 $B$ の線型結合
+		\[
+			\label{eq: ベクトルの基底による分解}
+			\bm v = \sum_{i \in I'}\bm b_i\lambda_i
+			\qquad
+			\lambda_i \in \mathbb K
+			\tag{2}
+		\]
+		で<strong class="emph">一意に</strong>表される．これら 2 つの式の類似性も注目するべきだろう．
+	</div>
+
+	<h3>線型空間の次元</h3>
+	<div class="paragraph">
+		ところで，「線型空間の線型独立な生成系」のことを基底と定義したが，そのような生成系はひとつとは限らないだろう．それについて，次の補題が知られている：
+		<fieldset class="prop">
+			<legend>定理：シュタイニッツ (Steinitz) の交換補題</legend>
+			<div>
+				<div class="paragraph">
+					$V$ を体 $\mathbb K$ 上の線型空間とし，$G$ をその生成系とする．このとき，$V$ の任意の線型独立な部分集合 $W$ に対して，次が成り立つ：
+					<ul style="list-style-type: none;">
+						<li>I. $|W| \leq |G|$．</li>
+						<li>II. $G$ の部分集合 $B'$ であって，$|G'| = |G| -|W|$ かつ $V = \span(G'\cup W)$ となるものが存在する．</li>
+					</ul>
+				</div>
+			</div>
+		</fieldset>
+		$V$ が有限次元である場合，定理の証明は次のようになる<sup id="ref_1"><a href="#note_1">*1</a></sup>：
+		<details class="proof">
+			<summary>［証明］</summary>
+			<div>
+				<div class="paragraph">
+					$G = \{g_1,\dots,g_n\}$，$W = \{w_1,\dots,w_m\}$ とおく．$0$ 以上 $m$ 以下の自然数 $k$ をとり，
+					\[
+						S_k = \{w_1,\dots,w_k; \; g_{k +1},\dots,g_n\}
+					\]
+					とおく．ただし $k = 0$ のときは $S_k = G$，$k \geq n$ のときは $S_k = W$ とする．このとき，各 $k$ に対して i) $k \leq n$，および ii) $V = \span S_k$ となることを $k$ についての数学的帰納法で示そう．
+				</div>
+				<div class="paragraph">
+					$k = 0$ の場合は自明である．ある $k$ において i), ii) の成立を仮定する．このとき ii), $u_{k +1}$ は $S_k$ のある線型結合で一意に表される：
+					\[
+						w_{k+1} = \sum_{j=1}^k w_j\lambda_j +\sum_{j=k+1}^n g_j\mu_j.
+					\]
+					このとき，$\mu_{k+1},\dots,\mu_n$ のうち少なくともひとつはゼロでない：さもなければ，上式の左辺は $\{w_1,\dots,w_k\}$ の線型結合となり，$W$ が線型独立であることに反する．同様の理由で，$k +1 > n$ なら $k \geq n$ であるため $S_k = W$ となり，$w_{k+1}$ が $W$ の線型結合で表されてしまう．よって $k +1 \leq n$，すなわち i) が再び示された．
+				</div>
+				<div class="paragraph">
+					$\mu_{k+1},\dots,\mu_n$ を適当に並べ替えて，$\mu_{k+1} \neq 0$ となるようにしても一般性を失わない．このとき，上式を $g_{k +1}$ について解くことができる：
+					\[
+						g_{k +1} = w_{k+1}\frac{1}{\mu_{k+1}} -\sum_{j=1}^k w_j\lambda_j -\sum_{j=k+2}^n g_j\mu_j.
+					\]
+					よって $g_{k+1} \in \span\{w_1,\dots,w_{k+1}; \; g_{k+2},\dots,g_n\} = \span S_{k+1}$ である．このことから $\span S_{k+1} \supseteq \span S_k$ だが，同時に $\span S_k \supseteq \span S_{k+1}$ でもあるから $\span S_{k+1} = \span S_k = V$，よって ii) も再び得られた．
+				</div>
+				<div class="paragraph">
+					以上より，$0 \leq k \leq m$ なる任意の $k$ に対して i), ii) が示された．補題の I. は今示された $k = m$ の場合の i) で，補題の II. の $G'$ は今示された $k = m$ の場合の ii) における集合 $\{g_{m+1},\dots,g_m\}$ である．█
+				</div>
+			</div>
+		</details>
+		この補題によれば，線型空間 $V$ のあらゆる生成系は，$V$ の線型独立な部分集合よりも大きな集合である．特に，定理の線型独立な部分集合 $W$ に線型空間 $V$ の基底を選んだ場合を考えれば，<strong class="emph">$V$ の基底は $V$ の生成系のうち「最も小さいもの」&mdash;&mdash; 正しくは極小のもの</strong>であることが判る．このことから次の定理を得る：
+		<fieldset class="thm">
+			<legend>定理：線型空間の次元定理</legend>
+			<div class="paragraph">
+				体 $\mathbb K$ 上の線型空間のすべての基底の濃度は等しい．
+			</div>
+		</fieldset>
+		線型空間 $V$ の基底の濃度を，線型空間 $V$ の<strong class="kw">次元 (dimension) </strong>と謂い，記号 $\dim V$ で表す．後の頁の議論で明らかになるように，次元は本質的に線型空間を特徴づける非常に重要な量だ．
+	</div>
+	<div class="paragraph">
+		線型空間 $V$ の基底 $\{\bm b_i\}_{i\in I}$ をひとつ選ぶ．すると $V$ の任意の部分空間 $W$ に対し，添字集合 $I$ のある部分集合 (有限とは限らない) $I'$ を選んで族 $\{\bm b_{i'}\}_{i'\in I'}$ が $W$ の基底になるように出来る．そして $W$ の次元はその基底の位数，つまり $|I'|$ に等しい．
+		よって一般に $\dim W \leq \dim V$ である．同様に，2 つの部分空間 $W_1,W_2$ に対して $I$ の部分集合 $I_1,I_2$ を選んで，
+		\[
+			W_1 = \span\big(\{b_{i_1}\}_{i_1 \in I_1}\big),
+			\qquad
+			W_2 = \span\big(\{b_{i_2}\}_{i_2 \in I_2}\big)
+		\]
+		となるように出来る．これらの和空間 $W_1 +W_2$ の基底は $I' = I_1 \cup I_2$ で添字付けられた族 $\{b_{i'}\}_{i' \in I'}$，交空間 $I_1 \cap I_2$ の基底は $I'' = I_1 \cap I_2$ で添字付けられた族 $\{b_{i''}\}_{i'' \in I''}$ である．これと集合の位数に関する等式 $|I_1\cup I_2| = |I_1| +|I_2| -|I_1\cap I_2|$ から，次の等式を得る：
+		<fieldset class="thm">
+			<legend>定理：部分空間の次元定理</legend>
+			<div class="paragraph">
+				線型空間 $V$ の 2 つの部分空間 $W_1,W_2$ について次が成り立つ：
+				\[
+					\label{eq: 部分空間の次元定理}
+					\dim(W_1 +W_2) = \dim W_1 +\dim W_2 -\dim(W_1 \cap W_2)
+					\tag{3}
+				\]
+			</div>
+		</fieldset>
+		特に，$W_1,W_2$ が線型独立でその和が直和となるときは，$W_1 \cap W_2 = \{o\}$ より \eqref{eq: 部分空間の次元定理} 式の第 3 項はゼロになるので
+		\[
+			\dim(W_1 \oplus W_2) = \dim W_1 +\dim W_2
+		\]
+		となる．
+	</div>
+
+	<div>
+		<h4>脚注</h4>
+		<ol id="footnote">
+			<li id="note_1"><a href="#ref_1">↑</a> 無限次元の場合は，選択公理と同値な命題として知られる Tukey の補題を用いて示される．</li>
+		</ol>	
+	</div>
+</body>
+</html>
