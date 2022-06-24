@@ -16,7 +16,7 @@
 		体 $\mathbb K$ 上の線型空間 $V$ のある部分集合 $W$ であって，それが再び $V$ 上の加法とスカラー乗法について $\mathbb K$-線型空間となるとき，$W$ を $V$ の<strong class="kw">線型部分空間 (linear subspace) </strong>，<strong class="kw">ベクトル部分空間 (vector subspace) </strong>，あるいは紛れの虞が無ければ単に<strong class="kw">部分空間 (subspace) </strong>と謂う<sup id="ref_1"><a href="#note_1">*1</a></sup>．定義より，1 元集合 $\{\bm 0\}$ と $V$ 自身は明らかに部分空間であり，これらは自明な部分空間と呼ばれる．
 	</div>
 	<div class="paragraph">
-		部分空間は，線型空間 $V$ を構成する「部品」のようなものだと考えれば良いと思う．<strong class="emph">$V$ 全体をより「小さな」部分空間たちに分割した後，それらを「くっつけて」$V$ 全体を表そう</strong>，というのが本頁と，続く『<a href="./linearly_independance.html" rel="noreferrer">線型独立性</a>』『<a href="./basis_and_dimension.html" rel="noreferrer">基底と次元</a>』の目標だ．
+		部分空間は，線型空間 $V$ を構成する「部品」のようなものだと考えれば良いと思う．<strong class="emph">$V$ 全体をより「小さな」部分空間たちに分割した後，それらを「くっつけて」$V$ 全体を表そう</strong>，というのが本頁と，続く『<a href="./linear_independance.html" rel="noreferrer">線型独立性</a>』『<a href="./basis_and_dimension.html" rel="noreferrer">基底と次元</a>』の目標だ．
 	</div>
 
 	<h3>部分空間であることの必要十分条件</h3>
@@ -110,7 +110,7 @@
 		<details class="proof">
 			<summary>［証明］</summary>
 			<div class="paragraph">
-				\eqref{eq: 線型苞} 式の右辺を $A$ とおき，また適当な添字集合 $I$ をとって部分集合 $G$ を $I$ で添字付けられたベクトル族と見做す：$G = \{\bm g_i\}_{i\in I}$．定義より $A$ は $G$ を部分集合として含む部分空間であり，各 $i \in I$ に対して $\bm g_i \in A$ であるから，
+				\eqref{eq: 線型苞} 式の右辺を $A$ とおく．$\span G$ はその定義から明らかに，$G$ を部分集合として含むから $\span G \supseteq A$ である．一方，適当な添字集合 $I$ をとって部分集合 $G$ を $I$ で添字付けられたベクトル族と見做す：$G = \{\bm g_i\}_{i\in I}$．定義より $A$ は $G$ を部分集合として含む部分空間であり，各 $i \in I$ に対して $\bm g_i \in A$ であるから，
 				\[
 					\bm g_i +\bm g_j \in A
 					\quad\wedge\quad
@@ -118,10 +118,10 @@
 					\qquad
 					(i,j \in I, \; \lambda \in \mathbb K).
 				\]
-				ゆえに，$G$ の任意の線型結合は<ruby>亦<rp>(</rp><rt>また</rt><rp>)</rp></ruby> $A$ に含まれ，したがって $\span G \subseteq A$ である．一方，$\span G$ は明らかに $G$ を部分集合として含むから，$A$ の定義より $\span G \supseteq A$ である．よって $A = \span G$ である．また同様にして，$V$ の部分空間 $W$ が $G$ を部分集合として含むとき，$A = \span G$ も部分集合として含む：$G \subseteq W \;\Longrightarrow\; \span G \subseteq W$．これは $\span G$ が $G$ を部分集合として含む部分空間全体において (集合の包含関係に関して) 最小であることに他ならない．█
+				ゆえに，$G$ の任意の線型結合は<ruby>亦<rp>(</rp><rt>また</rt><rp>)</rp></ruby> $A$ に含まれ，したがって $\span G \subseteq A$ である．よって $A = \span G$ である．また同様にして，$V$ の部分空間 $W$ が $G$ を部分集合として含むとき，$A = \span G$ も部分集合として含む：$G \subseteq W \;\Longrightarrow\; \span G \subseteq W$．これは $\span G$ が $G$ を部分集合として含む部分空間全体において (集合の包含関係に関して) 最小であることに他ならない．█
 			</div>
 		</details>
-		この命題は生成された部分空間 $\span G$ に別の観点からの定義を与えている．$G$ を部分集合として含むあらゆる部分空間によって「包まれる」部分空間，と謂う意味で，$G$ が生成する部分空間 $\span G$ は $G$ の<strong class="kw">線型苞 (linear hull) </strong>とも呼ばれる<sup id="ref_2"><a href="#note_2">*2</a></sup>．特に，ひとつのベクトル $\bm a$ が生成する部分空間 $\span\{\bm a\}$ は $\bm a$ を含む最小の部分空間で，その元は $\bm a$ の任意のスカラー倍になる．そのため $\span\{\bm a\}$ は特に $\bm a\mathbb K$ と表される．
+		この命題は生成された部分空間 $\span G$ に別の観点からの定義を与えている．$G$ を部分集合として含むあらゆる部分空間によって「包まれる」部分空間，と謂う意味で，$G$ が生成する部分空間 $\span G$ は $G$ の<strong class="kw">線型苞 (linear hull) </strong>とも呼ばれる<sup id="ref_2"><a href="#note_2">*2</a></sup>．特に，ひとつのベクトル $\bm a$ が生成する部分空間 $\span\{\bm a\}$ は $\bm a$ を含む最小の部分空間で，その元は $\bm a$ の任意のスカラー倍になる．そのため $\span\{\bm a\}$ は特に $\bm a\mathbb K$ と表される．これは線型空間 $V$ の中の最小の非自明な部分空間でもある．
 	</div>
 
 	<div>
