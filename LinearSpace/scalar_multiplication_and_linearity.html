@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="../noimage_stylesheet_content.css">
+	<script type="text/javascript" src="../config.js" defer></script>
+	<script type="text/javascript" id="MathJax-script" async
+		src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+	</script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>［補足］スカラー乗法と“線型性”</title>
+</head>
+<body>
+	<h2>［補足］スカラー乗法と“線型性”</h2>
+	<div class="paragraph" >
+		本頁は線型空間論の記事『<a href="./linear_space.html" rel="noreferrer">線型空間</a>』の内容の補足で，群や環 (体)，群の作用，線型写像といった概念を学習済みの読者を対象に，線型空間 (或いは環上の加群) のスカラー乗法について付加的な説明をすることを目的にしている．体上の線型空間は環上の加群の特別な場合なので，以下では環上 $R$ 上の加群 $M$ について議論する (環 $R$ を代わりに体 $\mathbb K$ に置き換えれば，線型空間についても同様の議論が成り立つ)．
+	</div>
+
+	<h3>環の作用</h3>
+	<div class="paragraph">
+		アーベル群 $(M,+)$ 上の変換 ($M$ から $M$ 自身への写像のこと) 全体を $\mathfrak S_M$ と書こう．各点ごとの和
+		\[
+			(f +g)(a) = f(a) +g(a),
+			\qquad f,g \in \mathfrak S_M; \; a\in M
+		\]
+		(この式の和はアーベル群 $M$ に定めらた和に依存することに注意しよう) と写像の合成に関して $(\mathfrak S_M,+,\circ)$ は環となる．この環も演算の記号を省略して単に $\mathfrak S_X$ と表そう．さて，環 $R$ からアーベル群 $(M,+)$ への<strong class="kw">作用</strong>とは，環 $R$，環 $\mathfrak S_M$，および準同型写像 $\varphi : R \to \mathfrak S_M$ の三つ組 $\big(R,\mathfrak S_M,\varphi\big)$ のことである．各 $x \in R$ に対して定まるアーベル群 $M$ 上の変換を $\varphi_x$ と表す．$\varphi$ が準同型写像であることから，任意の $x,y \in R$ と環 $R$ の単位元 $1$ に対して
+		\[
+			\varphi_{x +y}(a) = \varphi_x(a) +\varphi_y(a),
+			\quad
+			\varphi_{xy}(a) = (\varphi_y \circ \varphi)(a),
+			\quad
+			\varphi_1(a) = a, \qquad a \in M
+		\]
+		が要請される．或いは，$\varphi_x(a)$ と書く代わりに $ax$ と書くことにすれば，上の 3 条件は
+		\[
+			a(x +y) = ax +ay, \quad a(xy) = (ax)y, \quad a1 = a
+		\]
+		とも表せる．また，$0 \in R$ について
+		\[
+			a0 = a(0 +0) = a0 +a0,
+			\qquad
+			\therefore a0 = o
+			\mbox{ (アーベル群 $M$ の単位元)},
+		\]
+		また，$-1 \in R$ について
+		\[
+			a0 = a(1 +(-1)) = a1 +a(-1) = o
+		\]
+		より $a(-1) = -a$ である．
+	</div>
+	<div class="paragraph">
+		上述の 3 条件は，線型空間の公理のうち，スカラー乗法に関する公理に全く同じ形のものが含まれている．線型空間のスカラー乗法には更にもう 1 つの条件が要請された．言い換えれば，環の作用に追加の条件を要請することで作られる代数的構造が環上の加群 (体上の線型空間) というわけだ．
+	</div>
+
+	<h3>線型性</h3>
+	<div class="paragraph">
+		その追加の条件は次のようなものだった：
+		\[
+			\label{eq: 線型性}
+			\begin{aligned}
+				& (\forall x \in R)(\forall a,b\in M)\big( \varphi_x(a +b) = \varphi_x(a) +\varphi_x(b) \big), \\
+				\mbox{あるいは，} & (\forall x \in R)(\forall a,b\in M)\big( (a +b)x = ax +bx \big).
+			\end{aligned}
+			\tag{1}
+		\]
+		『<a href="./linear_space.html" rel="noreferrer">線型空間</a>』ではこの条件を<strong class="kw">線型性</strong>の条件だと述べた．線型写像について学習済みの読者なら，1 行目の式が線型写像の線型性そのものであることに気付くだろう．しかし，線型性と言えば 2 条件
+		\[
+			f(x +y) = f(x) +f(y), \qquad f(x\lambda) = f(x)\lambda
+		\]
+		のことを指すのが普通だが，これまでの説明では第一の式だけを線型性の条件と言っている．このことを説明するために，同変写像の概念を説明しよう：
+	</div>
+
+	<h3>作用準同型と線型写像</h3>
+	<div class="paragraph">
+		環 $R$ が 2 つのアーベル群 $M,N$ にそれぞれ作用 $(M,R,\varphi)$，$(N,R,\psi)$ を持つとする．これらの間の<strong class="kw">作用準同型</strong>とは，写像 $f : M \to N$ であって，任意の $x \in R$ に対し
+		\[
+			\label{eq: 作用準同型}
+			f \circ \varphi_x = \psi_x \circ f
+			\tag{2}
+		\]
+		を充たすもののことである．つまり，
+		\[
+			f\big(\varphi_x(a)\big) = \psi_x\big(f(a)\big)
+			\qquad\mbox{or,}\quad
+			f(ax) = f(a)x \qquad (a \in M)
+		\]
+		となる写像 $f : M \to N$ が作用準同型である．最後の行に見て取れるように，これは線型性の条件の $f(x\lambda) = f(x)\lambda$ と本質的に同じものだ．環上の加群や線型空間に特殊な条件 \eqref{eq: 線型性} を課す前の段階で，上の条件は得られるものだったのだ．線型写像とは，作用準同型 $f$ であって条件 \eqref{eq: 線型性} とも整合すること，すなわち任意の $a,b \in M$ に対して
+		\[
+			f(x +y) = f(x) +f(y)
+		\]
+		の成立を要請したもの，ということになる．線型性の本質は，この条件に全て含まれているというわけだ．こういった理由で，上式だけを取り立てて線型性の条件と呼んだ次第である．この立場では，各 $x \in R$ に対して定まる変換 $\varphi_x$ も線型写像として扱っているが，それはスカラー倍の演算が単位行列をスカラー倍したもので表現されることとも関係している．
+	</div>
+
+</body>
+</html>
