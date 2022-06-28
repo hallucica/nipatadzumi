@@ -17,7 +17,8 @@ window.MathJax = {
 			span: ["\\mathop{\\rm span}\\nolimits"],			// span
 			vermid: ["\\mathrel{}\\middle #1\\mathrel{}", 1],	// 内包的定義のときの中線
 			codim: ["\\mathop{\\mathrm{codim}}\\nolimits"],		// codim
-			null: ["\\mathop{\\rm null}\\nolimits"]				// nullity
+			null: ["\\mathop{\\rm null}\\nolimits"],			// nullity
+			supp: ["\\mathop{\\rm supp}\\nolimits"]				// support
 		}
 	},
 	chtml: {
